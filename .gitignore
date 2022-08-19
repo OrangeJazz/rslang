@@ -1,3 +1,5 @@
+src/components/controllers/config.ts
+
 # Logs
 logs
 *.log
