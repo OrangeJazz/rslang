@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-main, sans-serif;
+    font-style: normal;
+    line-height: 1;
+    font-weight: 400;
+    color: $color-dark;
+    background-color: $color-light;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 117rem;
+    margin: 0 auto;
+    overflow: visible;
+    overflow-x: hidden;
+}

@@ -1,5 +1,17 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+@use 'normalize.css';
+@import '../src/assets/styles/abstracts/variables';
+@import '../src/assets/styles/base/base';
+@import '../src/assets/styles/base/animation';
+@import '../src/assets/styles/base/typography';
+@import '../src/assets/styles/components/button';
+@import '../src/assets/styles/components/navigation';
+@import '../src/assets/styles/components/card';
+@import '../src/assets/styles/components/developer';
+@import '../src/assets/styles/components/logo';
+@import '../src/assets/styles/layout/footer';
+@import '../src/assets/styles/layout/header';
+@import '../src/assets/styles/layout/hero';
+@import '../src/assets/styles/layout/about';
+@import '../src/assets/styles/layout/features';
+@import '../src/assets/styles/layout/games';
+@import '../src/assets/styles/layout/developers';

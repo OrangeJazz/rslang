@@ -1,0 +1,22 @@
+.header {
+    height: 11rem;
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+    }
+    &--main {
+        background-color: $color-primary;
+        a:link,
+        a:visited {
+            color: $color-light;
+        }
+    }
+
+    &__wrapper {
+        height: 11rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
