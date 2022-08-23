@@ -36,3 +36,8 @@
         border-bottom: 2px dashed $color-secondary;
     }
 }
+
+.link_active {
+    border-bottom: 2px dashed $color-secondary !important;
+    cursor: auto;
+}

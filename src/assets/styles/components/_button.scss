@@ -23,14 +23,14 @@
         box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.25);
     }
 
-    &--secondary {
+    &_secondary {
         background-color: $color-secondary;
     }
-    &--primary {
+    &_primary {
         background-color: $color-primary;
     }
 
-    &--animated {
+    &_animated {
         animation: moveInBottom 0.2s ease-out 0.2s; // NEW!!!!
         animation-fill-mode: backwards; // NEW!!!!
     }
