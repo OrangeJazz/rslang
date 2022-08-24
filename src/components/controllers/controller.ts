@@ -17,12 +17,12 @@ export class Controller {
     async start() {
         this.view.onNewPageLoaded = (pageView) => {
             if (pageView instanceof Textbook) {
-                pageView.onLoadWords = async (group, page) => {
+                pageView.onNewWordsPage = async (group, page) => {
                     console.log(`Загружаю слова... (group=${group}, page=${page})`);
                     const words = await this.model.getWords(group, page);
-                    pageView.words = words;
-                    pageView.render();
+                    pageView.renderCards(words);
                 };
+                pageView.onNewWordsPage(0, 0);
             }
         };
     }

@@ -1,0 +1,27 @@
+.textbook {
+    &__heading {
+        text-align: center;
+    }
+
+    &__preloading {
+        text-align: center;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__page-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__page-button {
+        padding: 5px;
+        width: 35px;
+    }
+}
