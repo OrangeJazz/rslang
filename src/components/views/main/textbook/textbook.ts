@@ -1,5 +1,5 @@
-import { Word } from '../../types';
-import { Control } from '../control';
+import { Word } from '../../../types';
+import { Control } from '../../control';
 
 export class Textbook extends Control {
     groupNumber: number;
@@ -8,7 +8,7 @@ export class Textbook extends Control {
     onLoadWords!: (groupNumber: number, pageNumber: number) => void;
 
     constructor(parentNode: HTMLElement) {
-        super(parentNode, 'main');
+        super(parentNode, 'main', 'main');
         this.groupNumber = 1;
         this.pageNumber = 1;
         new Control(this.node, 'h2', '', 'Учебник');
