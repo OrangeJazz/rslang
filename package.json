@@ -4,7 +4,10 @@
   "description": "Final Task of RS School 2022Q1 by Team 163",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "webpack serve",
+    "prettier": "npx prettier --config .prettierrc --check \"src/**/*.ts\"",
+    "prettier:fix": "npx prettier --config .prettierrc --write \"src/**/*.ts\""
   },
   "repository": {
     "type": "git",
