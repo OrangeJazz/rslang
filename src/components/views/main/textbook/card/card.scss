@@ -1,0 +1,16 @@
+.card {
+    display: flex;
+    gap: 50px;
+    border: 1px solid black;
+
+    &__text-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__word-container {
+        display: flex;
+        gap: 20px;
+    }
+}
