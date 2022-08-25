@@ -1,16 +1,52 @@
 .card {
     display: flex;
-    gap: 50px;
+    align-items: center;
+    gap: 20px;
+    padding: 5px;
     border: 1px solid black;
 
-    &__text-container {
+    &__image-container {
+        height: 130px;
+        width: 190px;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    &__audio-and-text-container {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
+    &__word {
+        color: green;
+        font-weight: bold;
+    }
+
+    &__transcription {
+        color: gray;
+    }
+
+    &__text-example-container,
+    &__text-meaning-container,
     &__word-container {
         display: flex;
-        gap: 20px;
+        gap: 10px;
+    }
+
+    &__audio-button {
+        height: 20px;
+        width: 20px;
+        border: none;
+        background-color: transparent;
+        background-image: url("play-button.svg");
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &_playing {
+            background-image: url("pause-button.svg");
+        }
     }
 }
