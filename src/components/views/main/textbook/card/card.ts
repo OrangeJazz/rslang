@@ -16,7 +16,7 @@ export class Card extends Control {
         this.renderTextExampleContainer(textContainer.node, word);
     }
 
-    renderWordContainer(parentNode: HTMLElement, word: Word) {
+    renderWordContainer(parentNode: HTMLElement, word: Word): void {
         const container = new Control(parentNode, 'div', 'card__word-container');
         const audio = new Control<HTMLAudioElement>(container.node, 'audio');
         audio.node.src = word.audio;
@@ -30,7 +30,7 @@ export class Card extends Control {
         new Control(container.node, 'span', 'card__word-translate', word.wordTranslate);
     }
 
-    renderTextMeaningContainer(parentNode: HTMLElement, word: Word) {
+    renderTextMeaningContainer(parentNode: HTMLElement, word: Word): void {
         const container = new Control(parentNode, 'div', 'card__text-meaning-container');
         const audio = new Control<HTMLAudioElement>(container.node, 'audio');
         audio.node.src = word.audioMeaning;
@@ -45,7 +45,7 @@ export class Card extends Control {
         new Control(textContainer.node, 'p', 'card__text-meaning-translate', word.textMeaningTranslate);
     }
 
-    renderTextExampleContainer(parentNode: HTMLElement, word: Word) {
+    renderTextExampleContainer(parentNode: HTMLElement, word: Word): void {
         const container = new Control(parentNode, 'div', 'card__text-example-container');
         const audio = new Control<HTMLAudioElement>(container.node, 'audio');
         audio.node.src = word.audioExample;
@@ -60,7 +60,7 @@ export class Card extends Control {
         new Control(textContainer.node, 'p', 'card__text-example-translate', word.textExampleTranslate);
     }
 
-    addAudioButtonListeners(audioNode: HTMLAudioElement, buttonNode: HTMLButtonElement) {
+    addAudioButtonListeners(audioNode: HTMLAudioElement, buttonNode: HTMLButtonElement): void {
         buttonNode.onclick = () => {
             if (audioNode.paused) {
                 audioNode.play();

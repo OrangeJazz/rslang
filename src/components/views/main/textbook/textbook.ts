@@ -25,16 +25,32 @@ export class Textbook extends Control {
         this.groupNumber = groupNumber;
         this.pageNumber = pageNumber;
 
-        const container = new Control(this.node, 'div', 'container');
+        const container = new Control(this.node, 'div', 'container textbook__container');
 
         new Control(container.node, 'h2', 'textbook__heading', 'Учебник');
+        this.renderGroupButtons(container.node);
         this.cards = new Control(container.node, 'div', 'textbook__cards');
         new Control(this.cards.node, 'p', 'textbook__preloading', 'Слова загружаются...');
-        this.renderPageButtons();
+        this.renderPageButtons(container.node);
     }
 
-    renderPageButtons() {
-        const buttons = new Control(this.cards.node.parentElement, 'div', 'textbook__page-buttons');
+    renderGroupButtons(parentNode: HTMLElement): void {
+        const buttons = new Control(parentNode, 'div', 'textbook__group-buttons');
+        Array.from(Array(6), (_, i) => {
+            const button = new Control<HTMLButtonElement>(
+                buttons.node,
+                'button',
+                'textbook__group-button',
+                `Раздел ${i + 1}`
+            );
+            button.node.type = 'button';
+            button.node.style.backgroundColor = `rgb(255, ${220 - i * 20}, ${220 - i * 20})`;
+            button.node.onclick = () => this.onNewWordsPage(i, 0);
+        });
+    }
+
+    renderPageButtons(parentNode: HTMLElement): void {
+        const buttons = new Control(parentNode, 'div', 'textbook__page-buttons');
         this.pageButtons = {
             first: new Control<HTMLButtonElement>(buttons.node, 'button', 'textbook__page-button', '<<'),
             previous: new Control<HTMLButtonElement>(buttons.node, 'button', 'textbook__page-button', '<'),
@@ -57,15 +73,13 @@ export class Textbook extends Control {
         this.updateCurrentPageElement();
     }
 
-    updateCurrentPageElement() {
-        this.pageButtons.currentPage.node.textContent = `Страница ${this.pageNumber + 1}`;
+    updateCurrentPageElement(): void {
+        this.pageButtons.currentPage.node.textContent = `Страница ${this.pageNumber + 1} из 30`;
     }
 
-    renderCards(words: Word[]) {
+    renderCards(words: Word[]): void {
         this.cards.node.innerHTML = '';
-        words.forEach((word) => {
-            new Card(this.cards.node, word);
-        });
+        words.forEach((word) => new Card(this.cards.node, word));
         this.updateCurrentPageElement();
     }
 }
