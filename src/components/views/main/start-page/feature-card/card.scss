@@ -1,0 +1,57 @@
+$font-main: 'Raleway';
+$color-primary: #10b582;
+$color-secondary: #fa9f42;
+$color-light: #e5e5e5;
+$color-light-l: #e7e7e7;
+$color-dark: #353a5a;
+$color-black: #000;
+
+.card {
+    height: 52rem;
+    width: 27rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 9px;
+    border-color: transparent;
+    padding: 2.5rem 1.5rem;
+    transition: all 0.3s;
+    background-color: $color-light-l;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(13, 13, 13, 0.04);
+
+    &:hover {
+        background-color: $color-light-l;
+        box-shadow: 0.5rem 3.5rem 1.4rem rgba(13, 13, 13, 0.04);
+        transform: translate(-2px, -2px);
+    }
+
+    &__img {
+        max-width: 20rem;
+
+        &_container {
+            height: 25rem;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 25rem;
+        justify-content: space-between;
+    }
+
+    &__heading {
+        color: $color-primary;
+        font-size: 2.4rem;
+        margin-bottom: 0;
+    }
+
+    &__text {
+        font-size: 1.6rem;
+        text-align: center;
+        line-height: 130%;
+    }
+}
