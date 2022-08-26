@@ -1,6 +1,7 @@
 import { Controller } from './controllers/controller';
 import { Model } from './models/model';
 import { View } from './views/view';
+// import { MainPage } from './views/pages/main';
 
 export class App {
     controller: Controller;

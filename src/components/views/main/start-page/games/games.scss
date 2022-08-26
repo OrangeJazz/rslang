@@ -1,0 +1,30 @@
+$font-main: 'Raleway';
+$color-primary: #10b582;
+$color-secondary: #fa9f42;
+$color-light: #e5e5e5;
+$color-light-l: #e7e7e7;
+$color-dark: #353a5a;
+$color-black: #000;
+
+.games {
+    background-color: $color-primary;
+    &__wrapper {
+        margin: 10rem 0;
+        color: $color-light;
+    }
+
+    &__cards {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    &__heading {
+        text-align: center;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        font-weight: 500;
+        font-size: 5.8rem;
+        line-height: 100%;
+        margin-bottom: 6rem;
+        color: $color-light;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+}

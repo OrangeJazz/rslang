@@ -1,36 +1,19 @@
 import { Word } from '../types';
-
-interface Link {
-    name: string;
-    link: string;
-}
-
-export interface Card {
-    name: string;
-    content: string;
-    path: string;
-    link: string;
-}
+import { ICard } from '../types';
+import { Menu } from './menu';
+import { Devs } from './devs';
 
 export class Model {
     private backendBaseURL: string;
-    menu: Link[];
-    developers: Link[];
-    features: Card[];
+    menu: Menu;
+    developers: Devs;
+    features: ICard[];
+    games: ICard[];
 
     constructor(backendBaseURL = '') {
         this.backendBaseURL = backendBaseURL;
-        this.menu = [
-            { name: 'Главная', link: '1' },
-            { name: 'Учебник', link: '2' },
-            { name: 'Игры', link: '3' },
-            { name: 'Статистика', link: '4' },
-        ];
-        this.developers = [
-            { name: 'Антон', link: 'https://github.com/antonsergeev' },
-            { name: 'Олег', link: 'https://github.com/ali-gator' },
-            { name: 'Мария', link: 'https://github.com/OrangeJazz' },
-        ];
+        this.menu = new Menu();
+        this.developers = new Devs();
 
         this.features = [
             {
@@ -50,6 +33,21 @@ export class Model {
                 content:
                     'Авторизуйся и отслеживай свой прогресс, чтобы успешно достичь поставленных целей. И помни, постоянная практика - залог успеха!',
                 path: 'stat',
+                link: '',
+            },
+        ];
+        this.games = [
+            {
+                name: 'Аудиовызов',
+                content: 'Выбери правильный вариант перевода после произнесения слова',
+                path: 'listen',
+                link: '',
+            },
+            {
+                name: 'Спринт',
+                content:
+                    'Угадай, верен ли перевод слова. Получай очки за каждый правильный ответ. Но помни, что время ограничено!',
+                path: 'sprint',
                 link: '',
             },
         ];

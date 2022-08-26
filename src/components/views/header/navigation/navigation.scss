@@ -78,12 +78,4 @@ $color-black: #000;
     &_secondary {
         background-color: $color-secondary;
     }
-    &_primary {
-        background-color: $color-primary;
-    }
-
-    &_animated {
-        animation: moveInBottom 0.2s ease-out 0.2s; // NEW!!!!
-        animation-fill-mode: backwards; // NEW!!!!
-    }
 }

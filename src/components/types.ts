@@ -14,3 +14,23 @@ export interface Word {
     textMeaningTranslate: string;
     wordTranslate: string;
 }
+
+export interface Link {
+    name: string;
+    link: string;
+}
+
+export interface Person {
+    name: string;
+    link: string;
+    role: string;
+    imgPath: string;
+    work: string;
+}
+
+export interface ICard {
+    name: string;
+    content: string;
+    path: string;
+    link: string;
+}
