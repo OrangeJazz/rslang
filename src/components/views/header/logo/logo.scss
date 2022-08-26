@@ -1,0 +1,21 @@
+.logo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    &__img {
+        height: 2.5rem;
+    }
+    &__heading {
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin: 0;
+    }
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 130%;
+    font-weight: 500;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,30 @@
+$font-main: 'Raleway';
+$color-primary: #10b582;
+$color-secondary: #fa9f42;
+$color-light: #e5e5e5;
+$color-light-l: #e7e7e7;
+$color-dark: #353a5a;
+$color-black: #000;
+
+.header {
+    height: 11rem;
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+    }
+    &_main {
+        background-color: $color-primary;
+        a:link,
+        a:visited {
+            color: $color-light;
+        }
+    }
+
+    &__wrapper {
+        height: 11rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
