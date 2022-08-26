@@ -1,11 +1,4 @@
-$font-main: 'Raleway';
-$color-primary: #10b582;
-$color-secondary: #fa9f42;
-$color-light: #e5e5e5;
-$color-light-l: #e7e7e7;
-$color-dark: #353a5a;
-$color-black: #000;
-
+@import '../../variables.scss';
 .nav {
     &__list {
         list-style: none;
@@ -14,20 +7,10 @@ $color-black: #000;
         gap: 3.5rem;
     }
 
-    button {
-        padding: 1rem 3rem;
-        color: $color-light;
+    .btn {
         background-color: $color-secondary;
         border: none;
-        box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
-        cursor: pointer;
-        &:hover {
-            box-shadow: 2px 2px 1rem 0px rgba(0, 0, 0, 0.25);
-        }
-        &:active {
-            transform: translate(0, 0);
-            box-shadow: 2px 2px 0.3rem 0px rgba(0, 0, 0, 0.25);
-        }
+        padding: 1rem 3rem;
     }
 
     &__list-link {
