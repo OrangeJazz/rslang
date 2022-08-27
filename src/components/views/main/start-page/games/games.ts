@@ -8,14 +8,15 @@ export class Games extends Control {
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'section', 'games');
         this.model = new Model();
+        this.node.id = 'games';
         const container = new Control(this.node, 'div', 'container');
         const wrapper = new Control(container.node, 'div', 'games__wrapper');
         new Control(wrapper.node, 'h2', 'games__heading', 'Выбери свою игру');
         const cardsContainer = new Control(wrapper.node, 'div', 'games__cards');
-        for (let i = 0; i < this.model.games.length; i++) {
-            const card = new Card(cardsContainer.node, this.model.games[i], 'game');
+        for (let i = 0; i < this.model.games.games.length; i++) {
+            const card = new Card(cardsContainer.node, this.model.games.games[i], 'game');
             if (i === 0) card.node.classList.add('card-game_left');
-            if (i === this.model.games.length - 1) card.node.classList.add('card-game_right');
+            if (i === this.model.games.games.length - 1) card.node.classList.add('card-game_right');
         }
     }
 }

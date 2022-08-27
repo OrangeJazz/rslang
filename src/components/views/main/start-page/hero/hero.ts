@@ -9,7 +9,7 @@ export class Hero extends Control {
         const wrapper = new Control(container.node, 'div', 'hero__wrapper');
         const leftDiv = new Control(wrapper.node, 'div', 'hero__img-container_left');
         const leftImg = new Control<HTMLImageElement>(leftDiv.node, 'img', 'hero__img hero__img_left');
-        leftImg.node.src = './assets/img/photo1.jpg';
+        leftImg.node.src = './img/photo1.jpg';
         leftImg.node.alt = 'photo1';
         const centralDiv = new Control(wrapper.node, 'div', 'hero__content');
         new HeroLogo(centralDiv.node);
@@ -19,7 +19,7 @@ export class Hero extends Control {
         btn.node.href = '#';
         const rightDiv = new Control(wrapper.node, 'div', 'hero__img-container_right');
         const rightImg = new Control<HTMLImageElement>(rightDiv.node, 'img', 'hero__img hero__img_right');
-        rightImg.node.src = './assets/img/photo2.jpg';
+        rightImg.node.src = './img/photo2.jpg';
         rightImg.node.alt = 'photo2';
     }
 }

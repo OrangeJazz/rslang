@@ -13,8 +13,8 @@ export class Features extends Control {
         const wrapper = new Control(container.node, 'div', 'features__wrapper');
         new Control(wrapper.node, 'h2', '', 'Учиться с нами - здорово');
         const cardsContainer = new Control(wrapper.node, 'div', 'features__cards');
-        for (let i = 0; i < this.model.features.length; i++) {
-            new Card(cardsContainer.node, this.model.features[i], 'feature');
+        for (let i = 0; i < this.model.features.features.length; i++) {
+            new Card(cardsContainer.node, this.model.features.features[i], 'feature');
         }
     }
 }

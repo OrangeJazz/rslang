@@ -13,7 +13,7 @@ export class Footer extends Control {
         const firstColumnDiv = new Control(topBlock.node, 'div');
         const logoContainer = new Control(firstColumnDiv.node, 'div', 'footer__logo-container');
         const logoImg = new Control<HTMLImageElement>(logoContainer.node, 'img', 'footer__logo');
-        logoImg.node.src = './assets/img/rsschool.png';
+        logoImg.node.src = './img/rsschool.png';
         logoImg.node.alt = 'RS School logo';
         const secondColumnDiv = new Control(topBlock.node, 'div');
         new Control(secondColumnDiv.node, 'h3', 'footer__heading', 'Меню');

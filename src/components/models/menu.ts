@@ -4,9 +4,9 @@ export class Menu {
     menu: Link[];
     constructor() {
         this.menu = [
-            { name: 'Главная', link: '1' },
+            { name: 'Главная', link: '#' },
             { name: 'Учебник', link: '2' },
-            { name: 'Игры', link: '3' },
+            { name: 'Игры', link: '#games' },
             { name: 'Статистика', link: '4' },
         ];
     }
