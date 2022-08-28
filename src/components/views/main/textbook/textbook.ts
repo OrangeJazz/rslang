@@ -23,6 +23,7 @@ export class Textbook extends Control {
     pageButtons!: PageButtons;
     pageNumberControl!: Control;
     onNewWordsPage!: (groupNumber: number, pageNumber: number) => void;
+    onAudioPlay!: (audioNode: HTMLAudioElement) => void;
 
     constructor(parentNode: HTMLElement, groupNumber = 0, pageNumber = 0) {
         super(parentNode, 'main', 'main textbook');
@@ -128,7 +129,12 @@ export class Textbook extends Control {
 
     renderCards(words: Word[]): void {
         this.cards.node.innerHTML = '';
-        words.forEach((word) => new Card(this.cards.node, word));
+        words.forEach((word) => {
+            const card = new Card(this.cards.node, word);
+            card.onAudioPlay = (audioNode) => {
+                this.onAudioPlay(audioNode);
+            };
+        });
         this.updateCurrentPageElement();
     }
 }

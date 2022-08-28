@@ -4,6 +4,8 @@ import { Control } from '../../../control';
 import './card.scss';
 
 export class Card extends Control {
+    onAudioPlay!: (audioNode: HTMLAudioElement) => void;
+
     constructor(parentNode: HTMLElement, word: Word) {
         super(parentNode, 'article', 'card');
 
@@ -61,13 +63,14 @@ export class Card extends Control {
     }
 
     addAudioButtonListeners(audioNode: HTMLAudioElement, buttonNode: HTMLButtonElement): void {
-        buttonNode.onclick = () => {
-            if (audioNode.paused) {
-                audioNode.play();
-            } else {
-                audioNode.pause();
-            }
-        };
+        buttonNode.onclick = () => this.onAudioPlay(audioNode);
+        // {
+        //     if (audioNode.paused) {
+        //         audioNode.play();
+        //     } else {
+        //         audioNode.pause();
+        //     }
+        // };
         audioNode.onplay = () => buttonNode.classList.add('card__audio-button_playing');
         audioNode.onpause = () => buttonNode.classList.remove('card__audio-button_playing');
     }
