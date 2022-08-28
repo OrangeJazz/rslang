@@ -18,6 +18,7 @@ interface PageButtons {
 export class Textbook extends Control {
     groupNumber: number;
     pageNumber: number;
+    groupButtons!: Control<HTMLButtonElement>[];
     cards: Control;
     pageButtons!: PageButtons;
     pageNumberControl!: Control;
@@ -39,7 +40,10 @@ export class Textbook extends Control {
 
     renderGroupButtons(parentNode: HTMLElement): void {
         const buttons = new Control(parentNode, 'div', 'textbook__group-buttons');
-        Array.from(Array(6), (_, i) => {
+        const activeButtonClass = 'textbook__group-button_active';
+        this.groupButtons = [];
+
+        for (let i = 0; i < 6; i += 1) {
             const button = new Control<HTMLButtonElement>(
                 buttons.node,
                 'button',
@@ -48,8 +52,20 @@ export class Textbook extends Control {
             );
             button.node.type = 'button';
             button.node.style.backgroundColor = `rgb(255, ${220 - i * 20}, ${220 - i * 20})`;
-            button.node.onclick = () => this.onNewWordsPage(i, 0);
-        });
+            button.node.onclick = () => {
+                this.groupButtons.forEach((groupButton, j) => {
+                    if (i == j) {
+                        groupButton.node.classList.add(activeButtonClass);
+                    } else {
+                        groupButton.node.classList.remove(activeButtonClass);
+                    }
+                });
+                this.onNewWordsPage(i, 0);
+            };
+            this.groupButtons.push(button);
+        }
+
+        this.groupButtons[this.groupNumber].node.classList.add(activeButtonClass);
     }
 
     renderPageButtons(parentNode: HTMLElement): void {

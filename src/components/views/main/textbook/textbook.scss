@@ -24,6 +24,13 @@
     &__group-button {
         width: 100%;
         padding: 10px;
+        border: none;
+        cursor: pointer;
+
+        &_active {
+            border: 1px solid black;
+            font-weight: bold;
+        }
     }
 
     &__cards {
@@ -42,5 +49,6 @@
     &__page-button {
         padding: 5px;
         width: 35px;
+        cursor: pointer;
     }
 }

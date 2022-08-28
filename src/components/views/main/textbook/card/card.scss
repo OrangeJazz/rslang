@@ -44,6 +44,7 @@
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
+        cursor: pointer;
 
         &_playing {
             background-image: url("pause-button.svg");
