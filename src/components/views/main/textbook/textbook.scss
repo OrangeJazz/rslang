@@ -1,0 +1,54 @@
+.textbook {
+    &__container {
+        display:  flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    &__heading {
+        text-align: center;
+    }
+
+    &__preloading {
+        text-align: center;
+    }
+
+    &__group-buttons {
+        display:  flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    &__group-button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+
+        &_active {
+            border: 1px solid black;
+            font-weight: bold;
+        }
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__page-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__page-button {
+        padding: 5px;
+        width: 35px;
+        cursor: pointer;
+    }
+}

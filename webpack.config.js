@@ -4,6 +4,13 @@ const EslingPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    compress: true,
+    port: 8080,
+  },
     entry: path.resolve(__dirname, './src/index'),
     mode: 'production',
     module: {
@@ -25,6 +32,13 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "dist"),
+        },
+        compress: true,
+        port: 8080,
     },
     plugins: [
         new CleanWebpackPlugin(),

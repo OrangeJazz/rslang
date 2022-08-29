@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    height: 50px;
+    background-color: rgb(221, 221, 117);
+    order: 1;
+}
+
+.main {
+    flex-grow: 1;
+    order: 2;
+}
+
+.footer {
+    height: 50px;
+    background-color: rgb(236, 148, 148);
+    order: 3;
+}
+
+.container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
