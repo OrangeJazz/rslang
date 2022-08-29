@@ -2,18 +2,12 @@ $font-main: 'Raleway';
 $color-light: #e5e5e5;
 $color-dark: #353a5a;
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 *,
 *::after,
 *::before {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 html {
