@@ -13,7 +13,7 @@ export class View extends Control {
     onNewPageLoaded!: (pageView: PageView) => void;
 
     constructor() {
-        super(document.body, 'div', 'app_container');
+        super(document.body, 'div', 'app-container');
         this.header = new Control(this.node, 'header', 'header');
         this.footer = new Control(this.node, 'footer', 'footer');
         this.main = new StartPage(this.node);
