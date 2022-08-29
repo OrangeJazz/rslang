@@ -3,6 +3,8 @@ import { HeroLogo } from '../logo/logo';
 import './hero.scss';
 
 export class Hero extends Control {
+    onTextbook!: () => void;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'section', 'hero');
         const container = new Control(this.node, 'div', 'container');
@@ -15,8 +17,16 @@ export class Hero extends Control {
         new HeroLogo(centralDiv.node);
         new Control(centralDiv.node, 'h1', '', 'Учи английский играя');
         new Control(centralDiv.node, 'p', '', 'Образовательная онлайн-платформа изучения английского языка');
-        const btn = new Control<HTMLAnchorElement>(centralDiv.node, 'a', 'btn btn_secondary btn_animated', 'Начать');
-        btn.node.href = '#';
+
+        const button = new Control<HTMLButtonElement>(
+            centralDiv.node,
+            'button',
+            'btn btn_secondary btn_animated',
+            'Начать'
+        );
+        button.node.type = 'button';
+        button.node.onclick = () => this.onTextbook();
+
         const rightDiv = new Control(wrapper.node, 'div', 'hero__img-container_right');
         const rightImg = new Control<HTMLImageElement>(rightDiv.node, 'img', 'hero__img hero__img_right');
         rightImg.node.src = './img/photo2.jpg';

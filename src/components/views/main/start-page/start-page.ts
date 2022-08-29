@@ -10,14 +10,11 @@ export class StartPage extends Control {
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main');
-        new Hero(this.node);
+        const hero = new Hero(this.node);
+        hero.onTextbook = () => this.onTextbook();
         new About(this.node);
         new Features(this.node);
         new Games(this.node);
         new Developers(this.node);
-        // const container = new Control(this.node, 'div', 'container');
-        // const button = new Control<HTMLButtonElement>(this.node, 'button', '', 'Учебник');
-        // button.node.type = 'buton';
-        // button.node.onclick = () => this.onTextbook();
     }
 }

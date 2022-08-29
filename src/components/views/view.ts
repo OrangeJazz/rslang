@@ -15,15 +15,16 @@ export class View extends Control {
     onNewPageLoaded!: (pageView: PageView) => void;
 
     constructor() {
-        super(document.body, 'div', 'app_container');
+        super(document.body, 'div', 'app-container');
         this.header = new Header(this.node);
         this.main = new StartPage(this.node);
+        this.main.onTextbook = () => this.onTextbook();
         this.footer = new Footer(this.node);
+    }
 
-        // this.main.onTextbook = () => {
-        //     this.main.destroy();
-        //     this.main = new Textbook(this.node);
-        //     this.onNewPageLoaded(this.main);
-        // };
+    onTextbook() {
+        this.main.destroy();
+        this.main = new Textbook(this.node);
+        this.onNewPageLoaded(this.main);
     }
 }
