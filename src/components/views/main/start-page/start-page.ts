@@ -4,8 +4,6 @@ import { About } from './about/about';
 import { Features } from './features/features';
 import { Games } from './games/games';
 import { Developers } from './developers/developers';
-// import { Nav } from '../../header/navigation/navigation';
-// import { Header } from '../../header/header';
 
 export class StartPage extends Control {
     onTextbook!: () => void;

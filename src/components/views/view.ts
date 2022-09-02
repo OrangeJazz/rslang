@@ -9,9 +9,9 @@ import './global.scss';
 type PageView = StartPage | Textbook;
 
 export class View extends Control {
-    header: Control;
+    header: Header;
     main: PageView;
-    footer: Control;
+    footer: Footer;
     onNewPageLoaded!: (pageView: PageView) => void;
 
     constructor() {
