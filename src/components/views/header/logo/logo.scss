@@ -1,7 +1,10 @@
+@import '../../variables.scss';
 .logo {
     display: flex;
     gap: 1rem;
     align-items: center;
+    color: $color-light;
+    cursor: pointer;
     &__img {
         height: 2.5rem;
     }

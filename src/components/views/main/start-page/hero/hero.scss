@@ -47,6 +47,10 @@
         margin-bottom: 5rem;
     }
 
+    .btn {
+        border: none;
+    }
+
     .btn_animated {
         animation: moveInBottom 0.2s ease-out 0.2s; // NEW!!!!
         animation-fill-mode: backwards; // NEW!!!!

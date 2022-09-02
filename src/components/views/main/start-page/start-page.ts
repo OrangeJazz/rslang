@@ -12,9 +12,9 @@ export class StartPage extends Control {
         super(parentNode, 'main', 'main');
         const hero = new Hero(this.node);
         hero.onTextbook = () => this.onTextbook();
-
         new About(this.node);
-        new Features(this.node);
+        const features = new Features(this.node);
+        features.onTextbook = () => this.onTextbook();
         new Games(this.node);
         new Developers(this.node);
     }

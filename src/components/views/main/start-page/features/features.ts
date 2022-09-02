@@ -6,6 +6,7 @@ import { Card } from '../card/card';
 
 export class Features extends Control {
     model: Model;
+    onTextbook!: () => void;
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'div', 'features');
         this.model = new Model();

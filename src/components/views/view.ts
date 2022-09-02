@@ -18,14 +18,23 @@ export class View extends Control {
         super(document.body, 'div', 'app-container');
         this.header = new Header(this.node);
         this.header.onTextbook = () => this.onTextbook();
+        this.header.onStartPage = () => this.onStartPage();
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
         this.footer = new Footer(this.node);
+        this.footer.onTextbook = () => this.onTextbook();
+        this.footer.onStartPage = () => this.onStartPage();
     }
 
     onTextbook() {
         this.main.destroy();
         this.main = new Textbook(this.node);
+        this.onNewPageLoaded(this.main);
+    }
+
+    onStartPage() {
+        this.main.destroy();
+        this.main = new StartPage(this.node);
         this.onNewPageLoaded(this.main);
     }
 }

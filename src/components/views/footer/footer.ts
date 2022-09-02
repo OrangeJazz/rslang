@@ -3,6 +3,8 @@ import { Model } from '../../models/model';
 import './footer.scss';
 
 export class Footer extends Control {
+    onTextbook!: () => void;
+    onStartPage!: () => void;
     model: Model;
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'footer', 'footer');
@@ -18,16 +20,25 @@ export class Footer extends Control {
         const secondColumnDiv = new Control(topBlock.node, 'div');
         new Control(secondColumnDiv.node, 'h3', 'footer__heading', 'Меню');
         const menuList = new Control<HTMLUListElement>(secondColumnDiv.node, 'ul', 'footer__list');
-        for (let i = 0; i < this.model.menu.menu.length; i++) {
-            const menuItem = new Control<HTMLElement>(menuList.node, 'li');
-            const menuLink = new Control<HTMLAnchorElement>(
-                menuItem.node,
-                'a',
-                'nav__list-link',
-                `${this.model.menu.menu[i].name}`
-            );
-            menuLink.node.href = this.model.menu.menu[i].link;
-        }
+        // for (let i = 0; i < this.model.menu.menu.length; i++) {
+        const menuItem1 = new Control<HTMLElement>(menuList.node, 'li');
+        const menuLink1 = new Control<HTMLAnchorElement>(menuItem1.node, 'a', 'nav__list-link', `Главная`);
+        menuLink1.node.onclick = () => this.onStartPage();
+        menuLink1.node.href = '#';
+        const menuItem2 = new Control<HTMLElement>(menuList.node, 'li');
+        const menuLink2 = new Control<HTMLAnchorElement>(menuItem2.node, 'a', 'nav__list-link', `Учебник`);
+        menuLink2.node.onclick = () => this.onTextbook();
+        menuLink2.node.href = '#';
+        const menuItem3 = new Control<HTMLElement>(menuList.node, 'li');
+        const menuLink3 = new Control<HTMLAnchorElement>(menuItem3.node, 'a', 'nav__list-link', `Игры`);
+        menuLink3.node.onclick = () => this.onStartPage();
+        menuLink3.node.href = '#games';
+        const menuItem4 = new Control<HTMLElement>(menuList.node, 'li');
+        const menuLink4 = new Control<HTMLAnchorElement>(menuItem4.node, 'a', 'nav__list-link', `Статистика`);
+        menuLink4.node.onclick = () => this.onTextbook();
+        menuLink4.node.href = '#';
+        // menuLink.node.href = this.model.menu.menu[i].link;
+        // }
         const thirdColumnDiv = new Control(topBlock.node, 'div');
         new Control(thirdColumnDiv.node, 'h3', 'footer__heading', 'Разработчики');
         const devList = new Control<HTMLUListElement>(thirdColumnDiv.node, 'ul', 'footer__list');

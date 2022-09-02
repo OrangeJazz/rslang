@@ -24,8 +24,8 @@
     // a:visited {
     //     border-bottom: 2px solid transparent;
     // }
-    span:hover,
-    span:active {
+    a:hover,
+    a:active {
         border-bottom: 2px dashed $color-secondary;
     }
 }
