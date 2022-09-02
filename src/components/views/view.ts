@@ -17,6 +17,7 @@ export class View extends Control {
     constructor() {
         super(document.body, 'div', 'app-container');
         this.header = new Header(this.node);
+        this.header.onTextbook = () => this.onTextbook();
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
         this.footer = new Footer(this.node);

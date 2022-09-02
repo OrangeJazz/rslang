@@ -17,13 +17,15 @@
         font-size: 1.6rem;
         font-weight: 500;
         padding: 0.8rem 0;
+        cursor: pointer;
+        color: $color-light;
     }
-    a:link,
-    a:visited {
-        border-bottom: 2px solid transparent;
-    }
-    a:hover,
-    a:active {
+    // a:link,
+    // a:visited {
+    //     border-bottom: 2px solid transparent;
+    // }
+    span:hover,
+    span:active {
         border-bottom: 2px dashed $color-secondary;
     }
 }
