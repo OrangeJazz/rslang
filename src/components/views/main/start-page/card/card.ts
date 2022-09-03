@@ -4,6 +4,7 @@ import './card.scss';
 
 export class Card extends Control {
     onTextbook!: () => void;
+    onAudiogameStart!: () => void;
     constructor(parentNode: HTMLElement, card: ICard, type: string) {
         super(parentNode, 'div', `card-${type}`);
         const imgContainer = new Control(this.node, 'div', `card-${type}__img_container`);
@@ -24,6 +25,10 @@ export class Card extends Control {
         }
         if (card.name === 'Статистика') {
             btn.node.onclick = () => this.onTextbook();
+            btn.node.href = `#`;
+        }
+        if (card.name === 'Аудиовызов') {
+            btn.node.onclick = () => this.onAudiogameStart();
             btn.node.href = `#`;
         }
     }

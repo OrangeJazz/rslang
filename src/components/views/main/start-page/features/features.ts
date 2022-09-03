@@ -16,7 +16,7 @@ export class Features extends Control {
         const cardsContainer = new Control(wrapper.node, 'div', 'features__cards');
         for (let i = 0; i < this.model.features.features.length; i++) {
             const featureCard = new Card(cardsContainer.node, this.model.features.features[i], 'feature');
-            featureCard.onTextbook = () => this.onTextbook();
+            if (this.model.features.features[i].name === 'Учебник') featureCard.onTextbook = () => this.onTextbook();
         }
     }
 }

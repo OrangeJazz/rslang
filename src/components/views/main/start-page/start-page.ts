@@ -7,6 +7,7 @@ import { Developers } from './developers/developers';
 
 export class StartPage extends Control {
     onTextbook!: () => void;
+    onAudiogameStart!: () => void;
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main');
@@ -15,7 +16,8 @@ export class StartPage extends Control {
         new About(this.node);
         const features = new Features(this.node);
         features.onTextbook = () => this.onTextbook();
-        new Games(this.node);
+        const games = new Games(this.node);
+        games.onAudiogameStart = () => this.onAudiogameStart();
         new Developers(this.node);
     }
 }

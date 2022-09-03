@@ -4,6 +4,7 @@ import { Model } from '../../../../models/model';
 import './games.scss';
 
 export class Games extends Control {
+    onAudiogameStart!: () => void;
     model: Model;
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'section', 'games');
@@ -17,6 +18,7 @@ export class Games extends Control {
             const card = new Card(cardsContainer.node, this.model.games.games[i], 'game');
             if (i === 0) card.node.classList.add('card-game_left');
             if (i === this.model.games.games.length - 1) card.node.classList.add('card-game_right');
+            card.onAudiogameStart = () => this.onAudiogameStart();
         }
     }
 }

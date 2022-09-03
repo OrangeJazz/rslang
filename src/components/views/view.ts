@@ -3,10 +3,11 @@ import { StartPage } from './main/start-page/start-page';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { Textbook } from './main/textbook/textbook';
+import { AudiogameStart } from './main/audiogame-start/audiogame-start';
 
 import './global.scss';
 
-type PageView = StartPage | Textbook;
+type PageView = StartPage | Textbook | AudiogameStart;
 
 export class View extends Control {
     header: Header;
@@ -36,5 +37,13 @@ export class View extends Control {
         this.main.destroy();
         this.main = new StartPage(this.node);
         this.onNewPageLoaded(this.main);
+        this.main.onTextbook = () => this.onTextbook();
+        this.main.onAudiogameStart = () => this.onAudiogameStart();
     }
+
+    onAudiogameStart = () => {
+        this.main.destroy();
+        this.main = new AudiogameStart(this.node);
+        this.onNewPageLoaded(this.main);
+    };
 }
