@@ -24,8 +24,6 @@ export class View extends Control {
         this.header.onAuth = () => this.onLogin();
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
-        // this.main.onRegister = () => this.onRegister();
-        // this.main.onLogin = () => this.onLogin();
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
