@@ -4,6 +4,7 @@ import './audiogame-start.scss';
 export class AudiogameStart extends Control {
     onAudiogame!: () => void;
     onStartPage!: () => void;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main audiogame');
         const container = new Control(this.node, 'div', 'container');

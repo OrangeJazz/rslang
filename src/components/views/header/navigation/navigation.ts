@@ -1,10 +1,13 @@
 import { Control } from '../../control';
 // import { Model } from '../../../models/model';
 import './navigation.scss';
+
 // const model = new Model();
 export class Nav extends Control {
     onTextbook!: () => void;
     onStartPage!: () => void;
+    onAuth!: () => void;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'nav', 'nav');
         const navList = new Control<HTMLUListElement>(this.node, 'ul', 'nav__list');
@@ -26,7 +29,9 @@ export class Nav extends Control {
         navRef4.node.onclick = () => this.onTextbook();
         navRef4.node.href = '#';
         // }
-        const navItem = new Control<HTMLElement>(navList.node, 'li', 'nav-btn');
-        new Control<HTMLButtonElement>(navItem.node, 'button', 'nav__list-link btn', 'Вход');
+        const navItem5 = new Control<HTMLElement>(navList.node, 'li', 'nav-btn');
+        const navRef5 = new Control<HTMLAnchorElement>(navItem5.node, 'a', 'nav__list-link btn', 'Вход');
+        navRef5.node.onclick = () => this.onAuth();
+        navRef5.node.href = '#';
     }
 }

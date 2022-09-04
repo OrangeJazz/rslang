@@ -4,10 +4,11 @@ import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { Textbook } from './main/textbook/textbook';
 import { AudiogameStart } from './main/audiogame-start/audiogame-start';
+import { Auth, AuthPageType } from './main/auth/auth';
 
 import './global.scss';
 
-type PageView = StartPage | Textbook | AudiogameStart;
+type PageView = StartPage | Textbook | AudiogameStart | Auth;
 
 export class View extends Control {
     header: Header;
@@ -20,8 +21,11 @@ export class View extends Control {
         this.header = new Header(this.node);
         this.header.onTextbook = () => this.onTextbook();
         this.header.onStartPage = () => this.onStartPage();
+        this.header.onAuth = () => this.onRegister();
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
+        // this.main.onRegister = () => this.onRegister();
+        // this.main.onLogin = () => this.onLogin();
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
@@ -45,5 +49,17 @@ export class View extends Control {
         this.main.destroy();
         this.main = new AudiogameStart(this.node);
         this.onNewPageLoaded(this.main);
+    };
+
+    onRegister = () => {
+        this.main.destroy();
+        this.main = new Auth(this.node, AuthPageType.register);
+        this.main.onLogin = () => this.onLogin();
+    };
+
+    onLogin = () => {
+        this.main.destroy();
+        this.main = new Auth(this.node, AuthPageType.login);
+        this.main.onRegister = () => this.onRegister();
     };
 }

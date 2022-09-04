@@ -9,6 +9,7 @@ export class Header extends Control {
     nav: Nav;
     onTextbook!: () => void;
     onStartPage!: () => void;
+    onAuth!: () => void;
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'header', 'header header_main');
@@ -19,5 +20,6 @@ export class Header extends Control {
         this.nav = new Nav(wrapper.node);
         this.nav.onTextbook = () => this.onTextbook();
         this.nav.onStartPage = () => this.onStartPage();
+        this.nav.onAuth = () => this.onAuth();
     }
 }
