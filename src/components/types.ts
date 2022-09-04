@@ -34,3 +34,9 @@ export interface ICard {
     path: string;
     link: string;
 }
+
+export interface User {
+    email: string;
+    name: string;
+    password: string;
+}

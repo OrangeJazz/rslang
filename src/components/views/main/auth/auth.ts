@@ -22,6 +22,7 @@ export class Auth extends Control {
     onStartPage!: () => void;
     onLogin!: () => void;
     onRegister!: () => void;
+    auth!: () => void;
     type: AuthPageType;
 
     constructor(parentNode: HTMLElement, type: AuthPageType) {
@@ -79,6 +80,7 @@ export class Auth extends Control {
             }
             case InputEnum.password: {
                 input.node.type = 'password';
+                input.node.minLength = 8;
                 break;
             }
             default: {

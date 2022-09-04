@@ -53,11 +53,13 @@ export class View extends Control {
         this.main.destroy();
         this.main = new Auth(this.node, AuthPageType.register);
         this.main.onLogin = () => this.onLogin();
+        this.onNewPageLoaded(this.main);
     };
 
     onLogin = () => {
         this.main.destroy();
         this.main = new Auth(this.node, AuthPageType.login);
         this.main.onRegister = () => this.onRegister();
+        this.onNewPageLoaded(this.main);
     };
 }

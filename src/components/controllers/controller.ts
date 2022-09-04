@@ -4,6 +4,8 @@ import { Model } from '../models/model';
 import { View } from '../views/view';
 // import { StartPage } from '../views/start-page/start-page';
 import { Textbook } from '../views/main/textbook/textbook';
+import { Auth } from '../views/main/auth/auth';
+import { User } from '../types';
 
 export class Controller {
     model: Model;
@@ -28,6 +30,27 @@ export class Controller {
                 };
 
                 pageView.onNewWordsPage(0, 0);
+            }
+            if (pageView instanceof Auth) {
+                pageView.auth = async () => {
+                    const form = document.querySelector('.auth__form');
+                    form?.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const formValues = new FormData(e.target as HTMLFormElement);
+                        const { email, name, password } = Object.fromEntries(formValues.entries());
+                        if (formValues.has('name')) {
+                            await this.model.signUp({ email, name, password } as unknown as User);
+                        }
+                        const { token, userId } = await this.model.signIn({
+                            email,
+                            password,
+                        } as unknown as Omit<User, 'name'>);
+                        localStorage.setItem('jwt', token);
+                        localStorage.setItem('userId', userId);
+                        window.location.replace('/');
+                    });
+                };
+                pageView.auth();
             }
         };
     }
