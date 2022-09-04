@@ -2,15 +2,16 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const EslingPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "public"),
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
+        compress: true,
+        port: 8080,
     },
-    compress: true,
-    port: 8080,
-  },
     entry: path.resolve(__dirname, './src/index'),
     mode: 'production',
     module: {
@@ -35,7 +36,7 @@ const config = {
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, "dist"),
+            directory: path.join(__dirname, 'dist'),
         },
         compress: true,
         port: 8080,
@@ -46,6 +47,12 @@ const config = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './src/assets/img/', to: './img/' },
+                { from: './src/assets/icons/', to: './icons/' },
+            ],
         }),
     ],
     resolve: {

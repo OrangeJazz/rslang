@@ -1,0 +1,67 @@
+@import '../../variables.scss';
+.nav {
+    &__list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+    }
+
+    .btn {
+        background-color: $color-secondary;
+        border: none;
+        padding: 1rem 3rem;
+    }
+
+    &__list-link {
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding: 0.8rem 0;
+        cursor: pointer;
+        color: $color-light;
+    }
+    // a:link,
+    // a:visited {
+    //     border-bottom: 2px solid transparent;
+    // }
+    a:hover,
+    a:active {
+        border-bottom: 2px dashed $color-secondary;
+    }
+}
+
+.link_active {
+    border-bottom: 2px dashed $color-secondary !important;
+    cursor: auto;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 2rem 4.7rem;
+    color: $color-light;
+    border-radius: 0px 2rem;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover,
+    &:active {
+        color: #fff;
+    }
+
+    &:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 5px 5px 1.5rem 0px rgba(0, 0, 0, 0.25);
+    }
+
+    &:active {
+        outline: none;
+        transform: translate(1px, 1px);
+        box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.25);
+    }
+
+    &_secondary {
+        background-color: $color-secondary;
+    }
+}

@@ -1,0 +1,10 @@
+.developers {
+    margin-top: 12rem;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-bottom: 12rem;
+    }
+}
