@@ -36,11 +36,11 @@ export interface ICard {
 }
 
 export interface SprintGameItem {
-    question: string;
-    choiseOptions: GameChoiseOption[];
+    question: Word;
+    answers: GameAnswer[];
 }
 
-export interface GameChoiseOption {
+export interface GameAnswer {
     value: string;
     isCorrect: boolean;
 }

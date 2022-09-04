@@ -5,7 +5,7 @@ import './card.scss';
 export class Card extends Control {
     onTextbook!: () => void;
     onAudiogameStart!: () => void;
-    onSprintGameStart!: () => void;
+    onSprintGame!: () => void;
 
     constructor(parentNode: HTMLElement, card: ICard, type: string) {
         super(parentNode, 'div', `card-${type}`);
@@ -34,7 +34,7 @@ export class Card extends Control {
             btn.node.href = `#`;
         }
         if (card.name === 'Спринт') {
-            btn.node.onclick = () => this.onSprintGameStart();
+            btn.node.onclick = () => this.onSprintGame();
             btn.node.href = `#`;
         }
     }
