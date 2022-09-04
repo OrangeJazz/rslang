@@ -1,0 +1,47 @@
+.footer {
+    background-color: $color-primary;
+    color: $color-light;
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    &__heading {
+        margin-bottom: 2rem;
+    }
+
+    &__logo-container {
+        max-width: 18rem;
+    }
+
+    &__logo {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-light;
+    }
+
+    &__top-block {
+        margin-top: 8rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8rem;
+        font-weight: 400;
+        font-size: 1.6rem;
+    }
+
+    &__bottom-block {
+        color: $color-light;
+        text-align: center;
+        margin: 5rem 0 3rem 0;
+        font-weight: 400;
+        font-size: 1.4rem;
+        padding-top: 1rem;
+        border-top: 1px solid $color-light;
+    }
+}

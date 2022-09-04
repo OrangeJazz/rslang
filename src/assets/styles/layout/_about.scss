@@ -1,0 +1,25 @@
+.about {
+    &__wrapper {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 12rem;
+    }
+
+    &__item {
+        text-align: center;
+    }
+
+    &__heading {
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        color: $color-primary;
+        font-size: 5.8rem;
+        padding-bottom: 2.2rem;
+        margin: 0;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 120%;
+    }
+}
