@@ -1,9 +1,12 @@
+// import { Word } from '../../../../types';
 import { Control } from '../../../control';
 import './audiogame-start.scss';
 
 export class AudiogameStart extends Control {
     onAudiogameField!: () => void;
     onStartPage!: () => void;
+    setLevel!: (seletedIndex: number) => void;
+    // onNewGame!: (groupNumber: number, pageNumber: number) => Promise<Word[]>;
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main  audiogame');
         const container = new Control(this.node, 'div', 'container');
@@ -28,6 +31,7 @@ export class AudiogameStart extends Control {
             const option = new Control<HTMLOptionElement>(select.node, 'option', '', item.toString());
             option.node.value = item.toString();
         });
+        select.node.onchange = () => this.setLevel(select.node.selectedIndex);
 
         const startBtn = new Control<HTMLButtonElement>(wrapper.node, 'button', 'btn game__btn', 'Начать');
         startBtn.node.onclick = () => this.onAudiogameField();

@@ -4,6 +4,7 @@ import './game-field.scss';
 
 export class AudiogameField extends Control {
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main audiogame-field');
         const container = new Control(this.node, 'div', 'container');
