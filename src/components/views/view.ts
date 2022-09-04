@@ -23,6 +23,8 @@ export class View extends Control {
         this.header.onStartPage = () => this.onStartPage();
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
+        this.main.onAudiogameStart = () => this.onAudiogameStart();
+        this.main.onSprintGameStart = () => this.onSprintGameStart();
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
@@ -40,11 +42,18 @@ export class View extends Control {
         this.onNewPageLoaded(this.main);
         this.main.onTextbook = () => this.onTextbook();
         this.main.onAudiogameStart = () => this.onAudiogameStart();
+        this.main.onSprintGameStart = () => this.onSprintGameStart();
     }
 
     onAudiogameStart = () => {
         this.main.destroy();
         this.main = new AudiogameStart(this.node);
+        this.onNewPageLoaded(this.main);
+    };
+
+    onSprintGameStart = () => {
+        this.main.destroy();
+        this.main = new SprintGame(this.node);
         this.onNewPageLoaded(this.main);
     };
 }
