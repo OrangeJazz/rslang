@@ -14,3 +14,13 @@ export interface Word {
     textMeaningTranslate: string;
     wordTranslate: string;
 }
+
+export interface SprintGameItem {
+    question: string;
+    choiseOptions: GameChoiseOption[];
+}
+
+export interface GameChoiseOption {
+    value: string;
+    isCorrect: boolean;
+}

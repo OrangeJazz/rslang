@@ -2,8 +2,9 @@ import { BACKEND_BASE_URL } from './config';
 import { AudioManager } from './audio-manager';
 import { Model } from '../models/model';
 import { View } from '../views/view';
-// import { StartPage } from '../views/start-page/start-page';
+import { SprintGame } from '../views/main/sprint-game/sprint-game';
 import { Textbook } from '../views/main/textbook/textbook';
+import { GameChoiseOption, SprintGameItem } from '../types';
 
 export class Controller {
     model: Model;
@@ -28,6 +29,25 @@ export class Controller {
                 };
 
                 pageView.onNewWordsPage(0, 0);
+            } else if (pageView instanceof SprintGame) {
+                pageView.onWordGroupSelect = async (group) => {
+                    console.log(`Выбрана группа ${group}`);
+                    const sprintGameItems = await this.model.getWordsForSprintGame(group);
+                    const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
+                    const gameChoiseOptions = [] as GameChoiseOption[];
+                    pageView.renderGameField(sprintGameItem);
+
+                    pageView.onChoise = (word, isCorrect) => {
+                        console.log(`${word} - ${isCorrect}`);
+                        gameChoiseOptions.push({ value: word, isCorrect });
+                        if (sprintGameItems.length === 0) {
+                            pageView.renderGameResults(gameChoiseOptions);
+                        } else {
+                            const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
+                            pageView.renderGameField(sprintGameItem);
+                        }
+                    };
+                };
             }
         };
     }

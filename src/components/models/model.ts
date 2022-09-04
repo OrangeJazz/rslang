@@ -1,4 +1,4 @@
-import { Word } from '../types';
+import { GameChoiseOption, SprintGameItem, Word } from '../types';
 
 export class Model {
     private backendBaseURL: string;
@@ -35,4 +35,33 @@ export class Model {
         });
         return newWord;
     }
+
+    async getWordsForSprintGame(group: number): Promise<SprintGameItem[]> {
+        const words = (await this.getWords(group, 0)).slice(0, 10);
+        const sprintGameItems: SprintGameItem[] = words.map((word, i) => {
+            const choiseOptions: GameChoiseOption[] = [];
+            choiseOptions.push({
+                value: word.wordTranslate,
+                isCorrect: true,
+            });
+
+            const otherWords = words.filter((_, j) => j !== i);
+            const randomWordIndex = Math.floor(Math.random() * otherWords.length);
+            const randomWord = otherWords[randomWordIndex];
+            choiseOptions.push({
+                value: randomWord.wordTranslate,
+                isCorrect: false,
+            });
+
+            return {
+                question: word.word,
+                choiseOptions: shuffleArray<GameChoiseOption>(choiseOptions),
+            };
+        });
+        return shuffleArray<SprintGameItem>(sprintGameItems);
+    }
+}
+
+function shuffleArray<T>(array: T[]): T[] {
+    return [...array].sort(() => Math.random() - 0.5);
 }
