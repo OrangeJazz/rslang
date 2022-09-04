@@ -35,16 +35,28 @@ export class Controller {
                     const sprintGameItems = await this.model.getWordsForSprintGame(group);
                     const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
                     const gameChoiseOptions = [] as GameChoiseOption[];
-                    pageView.renderGameField(sprintGameItem);
+
+                    let timerValueInSeconds = 10;
+                    pageView.renderGameField(sprintGameItem, timerValueInSeconds);
+
+                    let timerID: number | undefined = undefined;
+                    const updateTimer = () => {
+                        timerValueInSeconds -= 1;
+                        pageView.timer.node.innerText = `${timerValueInSeconds}`;
+                        if (timerValueInSeconds === 0) {
+                            clearInterval(timerID);
+                            pageView.renderGameResults(gameChoiseOptions);
+                        }
+                    };
+                    timerID = setInterval(updateTimer, 1000) as unknown as number;
 
                     pageView.onChoise = (word, isCorrect) => {
-                        console.log(`${word} - ${isCorrect}`);
                         gameChoiseOptions.push({ value: word, isCorrect });
                         if (sprintGameItems.length === 0) {
                             pageView.renderGameResults(gameChoiseOptions);
                         } else {
                             const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
-                            pageView.renderGameField(sprintGameItem);
+                            pageView.renderGameField(sprintGameItem, timerValueInSeconds);
                         }
                     };
                 };

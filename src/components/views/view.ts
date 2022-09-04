@@ -8,7 +8,7 @@ import { AudiogameStart } from './main/audiogame-start/audiogame-start';
 
 import './global.scss';
 
-type PageView = StartPage | Textbook | SprintGame | AudiogameStart;
+type PageView = StartPage | Textbook | AudiogameStart | SprintGame;
 
 export class View extends Control {
     header: Header;

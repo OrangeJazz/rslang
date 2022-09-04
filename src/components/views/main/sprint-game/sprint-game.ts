@@ -1,10 +1,13 @@
 import { Control } from '../../control';
 import { GameChoiseOption, SprintGameItem } from '../../../types';
 
+import './sprint-game.scss';
+
 export class SprintGame extends Control {
     gameContainer: Control;
     groupButtons!: Control<HTMLButtonElement>[];
     gameField!: Control;
+    timer!: Control;
     onWordGroupSelect!: (groupNumber: number) => void;
     onChoise!: (word: string, isCorrect: boolean) => void;
 
@@ -27,7 +30,7 @@ export class SprintGame extends Control {
                 buttons.node,
                 'button',
                 'sprint-game__group-button',
-                `Раздел ${i + 1}`
+                `${i + 1}`
             );
             button.node.type = 'button';
             button.node.style.backgroundColor = `rgb(255, ${220 - i * 20}, ${220 - i * 20})`;
@@ -36,8 +39,9 @@ export class SprintGame extends Control {
         }
     }
 
-    renderGameField(gameItem: SprintGameItem): void {
+    renderGameField(gameItem: SprintGameItem, timerValue: number): void {
         this.gameContainer.node.innerHTML = '';
+        this.timer = new Control(this.gameContainer.node, 'p', 'sprint-game__timer', `${timerValue}`);
         new Control(this.gameContainer.node, 'p', 'sprint-game__question', gameItem.question);
         const buttons = new Control(this.gameContainer.node, 'div', 'sprint-game__buttons');
         gameItem.choiseOptions.forEach((choiseOption) => {
@@ -48,9 +52,20 @@ export class SprintGame extends Control {
 
     renderGameResults(gameChoiseOptions: GameChoiseOption[]): void {
         this.gameContainer.node.innerHTML = '';
+        new Control(this.gameContainer.node, 'p', 'sprint-game__results-heading', 'Ваши результаты: ');
+        const resultsCount = new Control(this.gameContainer.node, 'p', 'sprint-game__results-count');
+        const results = new Control(this.gameContainer.node, 'div', 'sprint-game__results');
+
+        let correctResultsCount = 0;
         gameChoiseOptions.forEach((gameChoiseOption) => {
-            const result = `${gameChoiseOption.value} - ${gameChoiseOption.isCorrect}`;
-            new Control(this.gameContainer.node, 'p', 'sprint-game__results', result);
+            const result = new Control(results.node, 'p', 'sprint-game__result', gameChoiseOption.value);
+            if (gameChoiseOption.isCorrect) {
+                result.node.classList.add('sprint-game__result_correct');
+                correctResultsCount += 1;
+            } else {
+                result.node.classList.add('sprint-game__result_not-correct');
+            }
         });
+        resultsCount.node.innerText = `${correctResultsCount} / ${gameChoiseOptions.length}`;
     }
 }

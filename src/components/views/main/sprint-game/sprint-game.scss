@@ -1,0 +1,81 @@
+.sprint-game {
+    &__container {
+        display:  flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    &__game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        min-width: 500px;
+        padding: 20px;
+        border: 1px solid darkgrey;
+    }
+
+    &__group-choise {
+        font-size: 2rem;
+    }
+
+    &__group-buttons {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__group-button {
+        width: 100%;
+        padding: 5px 15px;
+        cursor: pointer;
+    }
+
+    &__timer {
+        font-size: 2.5rem;
+    }
+
+    &__question {
+        font-size: 2.5rem;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    &__button {
+        min-width: 250px;
+        font-size: 2rem;
+    }
+
+    &__results {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__results-heading {
+        font-size: 2.5rem;
+    }
+
+    &__results-count {
+        font-size: 2.5rem;
+    }
+
+    &__result {
+        font-size: 2rem;
+
+        &_correct {
+            color: green;
+        }
+
+        &_not-correct {
+            color: brown;
+        }
+    }
+}
