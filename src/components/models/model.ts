@@ -1,4 +1,4 @@
-import { Word } from '../types';
+import { User, Word } from '../types';
 import { Features } from './features';
 import { Games } from './games';
 import { Menu } from './menu';
@@ -46,5 +46,39 @@ export class Model {
             (newWord[field] as string) = `${this.backendBaseURL}${word[field]}`;
         });
         return newWord;
+    }
+
+    async signUp({ email, password, name }: User): Promise<{ id: string; email: string; name: string }> {
+        const res = await fetch(`${this.backendBaseURL}users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password, name }),
+        });
+        if (res.ok) {
+            return res.json();
+        }
+        throw new Error(res.status.toString());
+    }
+
+    async signIn({ email, password }: Omit<User, 'name'>): Promise<{
+        message: string;
+        name: string;
+        refreshToken: string;
+        token: string;
+        userId: string;
+    }> {
+        const res = await fetch(`${this.backendBaseURL}signin`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+        if (res.ok) {
+            return res.json();
+        }
+        throw new Error(res.status.toString());
     }
 }
