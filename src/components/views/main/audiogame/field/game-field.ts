@@ -5,11 +5,11 @@ import './game-field.scss';
 export class AudiogameField extends Control {
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
 
-    constructor(parentNode: HTMLElement) {
+    constructor(parentNode: HTMLElement, word: Word) {
         super(parentNode, 'main', 'main audiogame-field');
         const container = new Control(this.node, 'div', 'container');
         const wrapper = new Control(container.node, 'div', 'audiogame__wrapper audiogame');
-        // this.renderAudioContainer(wrapper.node, word);
+        this.renderAudioContainer(wrapper.node, word);
         const answers = new Control(wrapper.node, 'div', 'answers');
         const answersList = [1, 2, 3, 4];
         answersList.map((item) => {

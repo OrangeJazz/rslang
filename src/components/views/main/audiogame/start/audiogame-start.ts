@@ -4,6 +4,7 @@ import './audiogame-start.scss';
 
 export class AudiogameStart extends Control {
     onAudiogameField!: () => void;
+    startGame!: () => void;
     onStartPage!: () => void;
     setLevel!: (seletedIndex: number) => void;
     // onNewGame!: (groupNumber: number, pageNumber: number) => Promise<Word[]>;
@@ -35,5 +36,6 @@ export class AudiogameStart extends Control {
 
         const startBtn = new Control<HTMLButtonElement>(wrapper.node, 'button', 'btn game__btn', 'Начать');
         startBtn.node.onclick = () => this.onAudiogameField();
+        startBtn.node.onclick = () => this.startGame();
     }
 }

@@ -4,14 +4,18 @@ import { Word } from '../types';
 export class Audiogame {
     correctWords: Word[];
     uncorrectWords: Word[];
-    // words: Word[];
+    words: Word[];
     model: Model;
+    restWords: Word[];
+    game?: AudiogameOne;
 
     constructor(model: Model) {
         this.model = model;
         this.correctWords = [];
         this.uncorrectWords = [];
-        // this.words = this.shuffleWords(await this.getWords());
+        this.words = [];
+        this.restWords = [];
+        this.getShuffledWords();
     }
 
     async getWords(): Promise<Word[]> {
@@ -22,27 +26,65 @@ export class Audiogame {
     }
 
     shuffleWords(words: Word[]): Word[] {
-        const suffledWords = [...words];
-        for (let i = suffledWords.length - 1; i > 0; i--) {
+        const shuffledWords = [...words];
+        for (let i = shuffledWords.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [suffledWords[i], suffledWords[j]] = [suffledWords[j], suffledWords[i]];
+            [shuffledWords[i], shuffledWords[j]] = [shuffledWords[j], shuffledWords[i]];
         }
-        return suffledWords as Word[];
+        return shuffledWords as Word[];
     }
 
-    getWord(words: Word[]): Word {
-        const word = words.pop() as Word;
+    async getShuffledWords(): Promise<void> {
+        const words = await this.getWords();
+        this.words = this.shuffleWords(words);
+        this.restWords = [...this.words];
+    }
+
+    getWord(): Word {
+        const word = this.restWords?.pop() as Word;
+        this.correctWords.push(word);
         return word;
     }
 
-    generateAnswers(words: Word[], correctAnswer: Word): Word[] {
+    checkAnswer(answer: Word): boolean {
+        const correctAnswer = this.correctWords[this.correctWords.length - 1];
+        return answer === correctAnswer;
+    }
+
+    generateAnswers(correctAnswer: Word): Word[] {
         const answers: Word[] = [correctAnswer];
         while (answers.length < 4) {
+            const words = this.words as Word[];
             const i = Math.floor(Math.random() * words.length);
             const randomWord = words[i];
+            if (randomWord === correctAnswer) continue;
             answers.push(randomWord);
         }
         this.shuffleWords(answers);
         return answers;
+    }
+
+    // getAnswer() => {
+
+    // }
+
+    start(): void {
+        this.game = new AudiogameOne(this.model);
+    }
+}
+
+export class AudiogameOne extends Audiogame {
+    correctWords: Word[];
+    uncorrectWords: Word[];
+    words: Word[];
+    restWords: Word[];
+
+    constructor(model: Model) {
+        super(model);
+        this.correctWords = [];
+        this.uncorrectWords = [];
+        this.words = [];
+        this.restWords = [];
+        this.getShuffledWords();
     }
 }
