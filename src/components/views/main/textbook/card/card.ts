@@ -5,7 +5,6 @@ import './card.scss';
 
 export class Card extends Control {
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
-    onAudiogameStart!: () => void;
     constructor(parentNode: HTMLElement, word: Word) {
         super(parentNode, 'article', 'card');
 

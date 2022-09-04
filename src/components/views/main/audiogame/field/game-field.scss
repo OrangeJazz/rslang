@@ -1,0 +1,18 @@
+@import '../../../variables.scss';
+.audiogame {
+    &__audio-button {
+        height: 20px;
+        width: 20px;
+        border: none;
+        background-color: transparent;
+        background-image: url('play-button.svg');
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+        &_playing {
+            background-image: url('pause-button.svg');
+        }
+    }
+}
