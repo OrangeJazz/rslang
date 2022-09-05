@@ -7,10 +7,7 @@ export class Card extends Control {
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
     constructor(parentNode: HTMLElement, word: Word) {
         super(parentNode, 'article', 'card');
-
-        const imageContainer = new Control(this.node, 'div', 'card__image-container');
-        imageContainer.node.style.backgroundImage = `url('${word.image}')`;
-
+        this.node.style.backgroundImage = `linear-gradient(105deg, transparent 0%, transparent 25%, rgba(255,255,255,0.75) 35%, rgba(255,255,255,0.75) 50%), url(${word.image})`;
         const textContainer = new Control(this.node, 'div', 'card__audio-and-text-container');
         this.renderWordContainer(textContainer.node, word);
         this.renderTextMeaningContainer(textContainer.node, word);
@@ -25,10 +22,11 @@ export class Card extends Control {
         const button = new Control<HTMLButtonElement>(container.node, 'button', 'card__audio-button');
         button.node.type = 'button';
         this.addAudioButtonListeners(audio.node, button.node);
+        const wordContainer = new Control(container.node, 'div', 'card__word-main-container');
 
-        new Control(container.node, 'span', 'card__word', word.word);
-        new Control(container.node, 'span', 'card__transcription', word.transcription);
-        new Control(container.node, 'span', 'card__word-translate', word.wordTranslate);
+        new Control(wordContainer.node, 'span', 'card__word', word.word);
+        new Control(wordContainer.node, 'span', 'card__transcription', word.transcription);
+        new Control(wordContainer.node, 'span', 'card__word-translate', word.wordTranslate);
     }
 
     renderTextMeaningContainer(parentNode: HTMLElement, word: Word): void {

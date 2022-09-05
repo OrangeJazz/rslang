@@ -2,6 +2,7 @@
 .audiogame-result {
     &__wrapper {
         margin: 0 auto;
+        margin-bottom: 5rem;
     }
 
     &__heading {
@@ -14,11 +15,14 @@
         margin: 1rem 0;
         color: $color-dark;
         font-size: 2rem;
+        text-align: center;
     }
 
     &__words-container {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 }
