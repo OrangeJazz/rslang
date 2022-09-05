@@ -9,6 +9,8 @@ export class StartPage extends Control {
     onTextbook!: () => void;
     onAudiogameStart!: () => void;
     onSprintGameStart!: () => void;
+    onRegister!: () => void;
+    onLogin!: () => void;
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main');

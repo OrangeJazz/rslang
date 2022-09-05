@@ -44,3 +44,9 @@ export interface GameAnswer {
     word: Word;
     isCorrect: boolean;
 }
+
+export interface User {
+    email: string;
+    name: string;
+    password: string;
+}

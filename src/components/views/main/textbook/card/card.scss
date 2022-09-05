@@ -1,26 +1,33 @@
+@import '../../../variables.scss';
 .card {
+    height: 35rem;
+    width: 58rem;
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 5px;
-    border: 1px solid black;
+    justify-content: end;
+    border-radius: 9px;
+    border-color: transparent;
+    transition: all 0.3s;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(13, 13, 13, 0.04);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    &__image-container {
-        height: 130px;
-        width: 190px;
-        background-position: center center;
-        background-size: contain;
-        background-repeat: no-repeat;
+    &:hover {
+        background-color: $color-light-l;
+        box-shadow: 0.5rem 3.5rem 1.4rem rgba(13, 13, 13, 0.04);
+        transform: translate(-2px, -2px);
     }
 
     &__audio-and-text-container {
+        padding: 2.5rem 1.5rem;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 1rem;
     }
 
     &__word {
-        color: green;
+        color: $color-primary;
         font-weight: bold;
     }
 
@@ -28,26 +35,49 @@
         color: gray;
     }
 
-    &__text-example-container,
-    &__text-meaning-container,
+    &__word-main-container {
+        display: flex;
+        width: 32rem;
+        justify-content: space-around;
+    }
+
     &__word-container {
         display: flex;
-        gap: 10px;
+        font-size: 1.8rem;
+        font-weight: 700;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    &__text-example-container,
+    &__text-meaning-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 1.6rem;
+        text-align: justify;
+    }
+
+    &__text-container {
+        width: 32rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     &__audio-button {
-        height: 20px;
-        width: 20px;
+        height: 2.5rem;
+        width: 2.5rem;
         border: none;
         background-color: transparent;
-        background-image: url("play-button.svg");
+        background-image: url('play-button.svg');
         background-position: center center;
         background-size: contain;
         background-repeat: no-repeat;
         cursor: pointer;
 
         &_playing {
-            background-image: url("pause-button.svg");
+            background-image: url('pause-button.svg');
         }
     }
 }
