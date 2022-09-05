@@ -1,8 +1,8 @@
 import { Control } from './control';
 import { SprintGameItem } from '../types';
 
-import { SprintGame } from './main/sprint-game/sprint-game';
-import { SprintGameLevelChoise } from './main/sprint-game-level-choise/sprint-game-level-choise';
+import { SprintGameField } from './main/sprint-game/field/sprint-game-field';
+import { SprintGameStart } from './main/sprint-game/start/sprint-game-start';
 import { StartPage } from './main/start-page/start-page';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
@@ -11,7 +11,7 @@ import { AudiogameStart } from './main/audiogame-start/audiogame-start';
 
 import './global.scss';
 
-type PageView = StartPage | Textbook | AudiogameStart | SprintGameLevelChoise | SprintGame;
+type PageView = StartPage | Textbook | AudiogameStart | SprintGameStart | SprintGameField;
 
 export class View extends Control {
     header: Header;
@@ -27,7 +27,7 @@ export class View extends Control {
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
         this.main.onAudiogameStart = () => this.onAudiogameStart();
-        this.main.onSprintGame = () => this.onSprintGameLevelChoise();
+        this.main.onSprintGameStart = () => this.onSprintGameStart();
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
@@ -45,7 +45,7 @@ export class View extends Control {
         this.onNewPageLoaded(this.main);
         this.main.onTextbook = () => this.onTextbook();
         this.main.onAudiogameStart = () => this.onAudiogameStart();
-        this.main.onSprintGame = () => this.onSprintGameLevelChoise();
+        this.main.onSprintGameStart = () => this.onSprintGameStart();
     }
 
     onAudiogameStart = () => {
@@ -54,15 +54,15 @@ export class View extends Control {
         this.onNewPageLoaded(this.main);
     };
 
-    onSprintGameLevelChoise = () => {
+    onSprintGameStart = () => {
         this.main.destroy();
-        this.main = new SprintGameLevelChoise(this.node);
+        this.main = new SprintGameStart(this.node);
         this.onNewPageLoaded(this.main);
     };
 
-    onSprintGameStart = (sprintGameItems: SprintGameItem[]) => {
+    onSprintGameField = (sprintGameItems: SprintGameItem[]) => {
         this.main.destroy();
-        this.main = new SprintGame(this.node, sprintGameItems);
+        this.main = new SprintGameField(this.node, sprintGameItems);
         this.onNewPageLoaded(this.main);
     };
 }

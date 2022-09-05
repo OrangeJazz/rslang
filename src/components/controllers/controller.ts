@@ -2,8 +2,8 @@ import { BACKEND_BASE_URL } from './config';
 import { AudioManager } from './audio-manager';
 import { Model } from '../models/model';
 import { View } from '../views/view';
-import { SprintGame } from '../views/main/sprint-game/sprint-game';
-import { SprintGameLevelChoise } from '../views/main/sprint-game-level-choise/sprint-game-level-choise';
+import { SprintGameField } from '../views/main/sprint-game/field/sprint-game-field';
+import { SprintGameStart } from '../views/main/sprint-game/start/sprint-game-start';
 import { Textbook } from '../views/main/textbook/textbook';
 import { GameAnswer, SprintGameItem } from '../types';
 
@@ -29,13 +29,13 @@ export class Controller {
                     pageView.onAudioPlay = (audioNode) => this.audioManager.handle(audioNode);
                 };
                 pageView.onNewWordsPage(0, 0);
-            } else if (pageView instanceof SprintGameLevelChoise) {
+            } else if (pageView instanceof SprintGameStart) {
                 pageView.onLevelChoise = async (group) => {
                     console.log(`Выбрана группа ${group}`);
                     const sprintGameItems = await this.model.getWordsForSprintGame(group);
-                    this.view.onSprintGameStart(sprintGameItems);
+                    this.view.onSprintGameField(sprintGameItems);
                 };
-            } else if (pageView instanceof SprintGame) {
+            } else if (pageView instanceof SprintGameField) {
                 const sprintGameItems = pageView.sprintGameItems;
                 const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
                 const gameAnswers = [] as GameAnswer[];

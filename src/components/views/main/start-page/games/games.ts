@@ -5,7 +5,7 @@ import './games.scss';
 
 export class Games extends Control {
     onAudiogameStart!: () => void;
-    onSprintGame!: () => void;
+    onSprintGameStart!: () => void;
     model: Model;
 
     constructor(parentNode: HTMLElement) {
@@ -23,7 +23,7 @@ export class Games extends Control {
                 card.onAudiogameStart = () => this.onAudiogameStart();
             } else if (i === this.model.games.games.length - 1) {
                 card.node.classList.add('card-game_right');
-                card.onSprintGame = () => this.onSprintGame();
+                card.onSprintGameStart = () => this.onSprintGameStart();
             }
         }
     }

@@ -1,23 +1,23 @@
-import { Control } from '../../control';
+import { Control } from '../../../control';
 
-import './sprint-game-level-choise.scss';
+import './sprint-game-start.scss';
 
-export class SprintGameLevelChoise extends Control {
+export class SprintGameStart extends Control {
     onLevelChoise!: (groupNumber: number) => void;
 
     constructor(parentNode: HTMLElement) {
-        super(parentNode, 'main', 'main sprint-game-level-choise');
-        const container = new Control(this.node, 'div', 'container sprint-game-level-choise__container');
+        super(parentNode, 'main', 'main sprint-game-start');
+        const container = new Control(this.node, 'div', 'container sprint-game-start__container');
 
-        new Control(container.node, 'h2', 'sprint-game-level-choise__heading', 'Игра "Спринт"');
+        new Control(container.node, 'h2', 'sprint-game-start__heading', 'Игра "Спринт"');
 
-        const img = new Control<HTMLImageElement>(container.node, 'img', 'sprint-game-level-choise__img');
+        const img = new Control<HTMLImageElement>(container.node, 'img', 'sprint-game-start__img');
         img.node.alt = 'спринт';
         img.node.src = './img/sprint.png';
 
-        new Control(container.node, 'h3', 'sprint-game-level-choise__choise-heading', 'Выберите уровень сложности');
+        new Control(container.node, 'h3', 'sprint-game-start__choise-heading', 'Выберите уровень сложности');
 
-        const select = new Control<HTMLSelectElement>(container.node, 'select', 'sprint-game-level-choise__select');
+        const select = new Control<HTMLSelectElement>(container.node, 'select', 'sprint-game-start__select');
         const levels = [
             'A1 - Elementary',
             'A2 - Pre-Intermediate',
@@ -34,7 +34,7 @@ export class SprintGameLevelChoise extends Control {
         const button = new Control<HTMLButtonElement>(
             container.node,
             'button',
-            'btn sprint-game-level-choise__start-button',
+            'btn sprint-game-start__start-button',
             'Начать'
         );
         button.node.type = 'button';
