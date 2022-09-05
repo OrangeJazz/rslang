@@ -63,8 +63,8 @@ export class Audiogame {
             if (randomWord === correctAnswer) continue;
             answers.push(randomWord);
         }
-        this.shuffleWords(answers);
-        return answers;
+        const shuffleAnswers = this.shuffleWords(answers);
+        return shuffleAnswers;
     }
 
     addWrongAnswer(word: Word): void {

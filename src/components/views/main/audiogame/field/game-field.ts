@@ -28,6 +28,12 @@ export class AudiogameField extends Control {
         buttonNode.onclick = () => this.onAudioPlay(audioNode);
         audioNode.onplay = () => buttonNode.classList.add('audiogame-card__audio-button_playing');
         audioNode.onpause = () => buttonNode.classList.remove('audiogame-card__audio-button_playing');
+        window.addEventListener('keydown', (e) => {
+            const keyCode = e.key;
+            if (keyCode === 'Enter') {
+                this.onAudioPlay(audioNode);
+            }
+        });
     }
 
     renderGameCard(word: Word, answersList: Word[]) {
@@ -36,8 +42,13 @@ export class AudiogameField extends Control {
         new Control(wrapper.node, 'h2', 'audiogame-card__heading', 'Как переводится слово?');
         this.renderAudioContainer(wrapper.node, word);
         const answers = new Control(wrapper.node, 'div', 'audiogame-card__answers');
-        answersList.map((item) => {
-            const answerBtn = new Control(answers.node, 'button', 'audiogame-card__answer btn', item.wordTranslate);
+        answersList.map((item, i) => {
+            const answerBtn = new Control(
+                answers.node,
+                'button',
+                'audiogame-card__answer btn',
+                `${i + 1}. ${item.wordTranslate}`
+            );
             answerBtn.node.onclick = () => {
                 this.getAnswer(item);
                 this.checkNextPage() ? this.onAudiogameField() : this.onAudiogameResult();

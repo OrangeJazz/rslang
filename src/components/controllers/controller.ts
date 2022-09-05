@@ -10,6 +10,7 @@ import { Audiogame } from './audiogame';
 import { AudiogameStart } from '../views/main/audiogame/start/audiogame-start';
 import { AudiogameField } from '../views/main/audiogame/field/game-field';
 import { AudiogameResult } from '../views/main/audiogame/result/game-result';
+// import { Word } from '../types';
 
 export class Controller {
     model: Model;
