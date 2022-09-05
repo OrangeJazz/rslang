@@ -9,6 +9,7 @@
     }
 
     &__heading {
+        margin-bottom: 2.5rem;
         text-align: center;
         margin: 4rem 0 2rem;
         color: $color-primary;
@@ -64,6 +65,10 @@
                 box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
             }
         }
+    }
+
+    &__page-number {
+        font-size: 1.6rem;
     }
 
     &__cards {

@@ -1,4 +1,3 @@
-// import { Word } from '../../../../types';
 import { Control } from '../../../control';
 import './audiogame-start.scss';
 
@@ -7,7 +6,7 @@ export class AudiogameStart extends Control {
     startGame!: () => void;
     onStartPage!: () => void;
     setLevel!: (seletedIndex: number) => void;
-    // onNewGame!: (groupNumber: number, pageNumber: number) => Promise<Word[]>;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main  audiogame');
         const container = new Control(this.node, 'div', 'container');

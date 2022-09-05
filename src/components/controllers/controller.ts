@@ -1,23 +1,27 @@
 import { BACKEND_BASE_URL } from './config';
 import { AudioManager } from './audio-manager';
+import { SprintGameController } from './sprint-game-controller';
+
 import { Model } from '../models/model';
+
 import { View } from '../views/view';
+import { SprintGameField } from '../views/main/sprint-game/field/sprint-game-field';
+import { SprintGameStart } from '../views/main/sprint-game/start/sprint-game-start';
 import { Textbook } from '../views/main/textbook/textbook';
 import { Auth } from '../views/main/auth/auth';
 import { User } from '../types';
 import { Api } from './api';
-// import { AudiogameField } from '../views/main/audiogame/field/game-field';
+
 import { Audiogame } from './audiogame';
-// import { Word } from '../types';
 import { AudiogameStart } from '../views/main/audiogame/start/audiogame-start';
 import { AudiogameField } from '../views/main/audiogame/field/game-field';
 import { AudiogameResult } from '../views/main/audiogame/result/game-result';
-// import { Word } from '../types';
 
 export class Controller {
     model: Model;
     view: View;
     audioManager: AudioManager;
+    sprintGameController: SprintGameController;
     api: Api;
     audiogame: Audiogame;
 
@@ -26,6 +30,7 @@ export class Controller {
         this.view = view;
         this.model.setBackendBaseURL(BACKEND_BASE_URL);
         this.audioManager = new AudioManager();
+        this.sprintGameController = new SprintGameController(model, view);
         this.api = new Api(BACKEND_BASE_URL);
         this.audiogame = new Audiogame(model);
     }
@@ -41,8 +46,15 @@ export class Controller {
                     const userInfo = await this.api.getUserInfo();
                     console.log(userInfo);
                 };
-
                 pageView.onNewWordsPage(0, 0);
+            } else if (pageView instanceof SprintGameStart) {
+                pageView.onGameStart = async (groupNumber) => {
+                    console.log(`Выбрана группа ${groupNumber}`);
+                    const pageNumber = undefined;
+                    this.view.onSprintGameField(groupNumber, pageNumber);
+                };
+            } else if (pageView instanceof SprintGameField) {
+                this.sprintGameController.startGame(pageView);
             }
             if (pageView instanceof Auth) {
                 pageView.auth = async () => {

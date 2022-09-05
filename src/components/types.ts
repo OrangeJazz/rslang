@@ -35,6 +35,16 @@ export interface ICard {
     link: string;
 }
 
+export interface SprintGameItem {
+    question: Word;
+    answers: GameAnswer[];
+}
+
+export interface GameAnswer {
+    word: Word;
+    isCorrect: boolean;
+}
+
 export interface User {
     email: string;
     name: string;

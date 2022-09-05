@@ -10,12 +10,12 @@ export class AudiogameResult extends Control {
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
     mistakes: Control<HTMLElement>;
     learnWords: Control<HTMLElement>;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main audiogame-result');
         const container = new Control(this.node, 'div', 'container');
         const wrapper = new Control(container.node, 'div', 'audiogame-result__wrapper');
         new Control(wrapper.node, 'h2', 'audiogame-result__heading', 'Игра завершена!');
-        // new Control(wrapper.node, 'h3', 'game__result', `Ваш результат: ${this.getResult()} из 20`);
         new Control(wrapper.node, 'h5', 'audiogame-result__text', `Выученные слова:`);
         this.learnWords = new Control(wrapper.node, 'div', 'audiogame-result__words-container');
         new Control(this.learnWords.node, 'p', 'textbook__preloading', 'Слова загружаются...');
