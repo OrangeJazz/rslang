@@ -9,21 +9,21 @@ export class Devs {
                 link: 'https://github.com/antonsergeev',
                 role: 'Team Lead',
                 imgPath: 'Anton',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Шаблон архитектуры приложения, раздел учебника, карточки слов, игра "Спринт"',
             },
             {
                 name: 'Олег',
                 link: 'https://github.com/ali-gator',
                 role: 'Developer',
                 imgPath: 'Oleg',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Настройка и развертывание бэкенда, функционал авторизации и регистрации пользователей',
             },
             {
                 name: 'Мария',
                 link: 'https://github.com/OrangeJazz',
                 role: 'Developer',
                 imgPath: 'Orange',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Дизайн приложения, главная страница, шапка, подвал, карточки слов, игра "Аудиовызов"',
             },
         ];
     }
