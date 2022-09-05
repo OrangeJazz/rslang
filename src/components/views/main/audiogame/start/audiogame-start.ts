@@ -35,7 +35,9 @@ export class AudiogameStart extends Control {
         select.node.onchange = () => this.setLevel(select.node.selectedIndex);
 
         const startBtn = new Control<HTMLButtonElement>(wrapper.node, 'button', 'btn game__btn', 'Начать');
-        startBtn.node.onclick = () => this.onAudiogameField();
-        startBtn.node.onclick = () => this.startGame();
+        startBtn.node.onclick = () => {
+            this.startGame();
+            this.onAudiogameField();
+        };
     }
 }

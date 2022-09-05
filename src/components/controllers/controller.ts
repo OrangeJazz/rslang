@@ -9,6 +9,7 @@ import { Audiogame } from './audiogame';
 // import { Word } from '../types';
 import { AudiogameStart } from '../views/main/audiogame/start/audiogame-start';
 import { AudiogameField } from '../views/main/audiogame/field/game-field';
+import { AudiogameResult } from '../views/main/audiogame/result/game-result';
 
 export class Controller {
     model: Model;
@@ -36,7 +37,6 @@ export class Controller {
 
                 pageView.onNewWordsPage(0, 0);
             }
-
             if (pageView instanceof AudiogameStart) {
                 pageView.setLevel = (selectedIndex) => {
                     sessionStorage.setItem('group', `${selectedIndex}`);
@@ -45,9 +45,27 @@ export class Controller {
                     this.audiogame.start();
                 };
             }
-
             if (pageView instanceof AudiogameField) {
-                // console.log(game.words);
+                if (this.audiogame.restWords.length > 0) {
+                    const word = this.audiogame.getWord();
+                    const answers = this.audiogame.generateAnswers(word);
+                    pageView.renderGameCard(word, answers);
+                    pageView.onAudioPlay = (audioNode) => this.audioManager.handle(audioNode);
+                    pageView.getNoAnswer = () => this.audiogame.addWrongAnswer(word);
+                    pageView.getAnswer = (answer) => {
+                        const result = this.audiogame.checkAnswer(answer);
+                        result ? this.audiogame.addRightAnswer(answer) : this.audiogame.addWrongAnswer(answer);
+                    };
+                }
+                pageView.checkNextPage = () => {
+                    return this.audiogame.restWords.length > 0;
+                };
+            }
+            if (pageView instanceof AudiogameResult) {
+                pageView.renderCards(this.audiogame.rightAnswers, pageView.learnWords);
+                pageView.renderCards(this.audiogame.wrongAnswers, pageView.mistakes);
+                pageView.getResult = () => this.audiogame.rightAnswers.size;
+                pageView.onAudioPlay = (audioNode) => this.audioManager.handle(audioNode);
             }
         };
     }

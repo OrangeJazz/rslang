@@ -3,16 +3,17 @@ import { Word } from '../types';
 
 export class Audiogame {
     correctWords: Word[];
-    uncorrectWords: Word[];
+    wrongAnswers: Set<Word>;
+    rightAnswers: Set<Word>;
     words: Word[];
     model: Model;
     restWords: Word[];
-    game?: AudiogameOne;
 
     constructor(model: Model) {
         this.model = model;
         this.correctWords = [];
-        this.uncorrectWords = [];
+        this.wrongAnswers = new Set();
+        this.rightAnswers = new Set();
         this.words = [];
         this.restWords = [];
         this.getShuffledWords();
@@ -41,13 +42,15 @@ export class Audiogame {
     }
 
     getWord(): Word {
-        const word = this.restWords?.pop() as Word;
-        this.correctWords.push(word);
+        const word = this.restWords.pop() as Word;
+        if (this.correctWords) this.correctWords.push(word);
+        else this.correctWords = [word];
         return word;
     }
 
     checkAnswer(answer: Word): boolean {
-        const correctAnswer = this.correctWords[this.correctWords.length - 1];
+        const arrLength = this.correctWords.length;
+        const correctAnswer = this.correctWords[arrLength - 1];
         return answer === correctAnswer;
     }
 
@@ -64,27 +67,19 @@ export class Audiogame {
         return answers;
     }
 
+    addWrongAnswer(word: Word): void {
+        this.wrongAnswers.add(word);
+    }
+
+    addRightAnswer(word: Word): void {
+        this.rightAnswers.add(word);
+    }
+
     // getAnswer() => {
 
     // }
 
-    start(): void {
-        this.game = new AudiogameOne(this.model);
-    }
-}
-
-export class AudiogameOne extends Audiogame {
-    correctWords: Word[];
-    uncorrectWords: Word[];
-    words: Word[];
-    restWords: Word[];
-
-    constructor(model: Model) {
-        super(model);
-        this.correctWords = [];
-        this.uncorrectWords = [];
-        this.words = [];
-        this.restWords = [];
-        this.getShuffledWords();
+    async start(): Promise<void> {
+        await this.getShuffledWords();
     }
 }

@@ -7,8 +7,9 @@ import { AudiogameStart } from './main/audiogame/start/audiogame-start';
 import { AudiogameField } from './main/audiogame/field/game-field';
 
 import './global.scss';
+import { AudiogameResult } from './main/audiogame/result/game-result';
 
-type PageView = StartPage | Textbook | AudiogameStart | AudiogameField;
+type PageView = StartPage | Textbook | AudiogameStart | AudiogameField | AudiogameResult;
 
 export class View extends Control {
     header: Header;
@@ -46,13 +47,21 @@ export class View extends Control {
     onAudiogameStart = () => {
         this.main.destroy();
         this.main = new AudiogameStart(this.node);
-        this.main.onAudiogameField = () => this.onAudiogameField();
         this.onNewPageLoaded(this.main);
+        this.main.onAudiogameField = () => this.onAudiogameField();
     };
 
     onAudiogameField = () => {
         this.main.destroy();
         this.main = new AudiogameField(this.node);
+        this.main.onAudiogameField = () => this.onAudiogameField();
+        this.main.onAudiogameResult = () => this.onAudiogameResult();
+        this.onNewPageLoaded(this.main);
+    };
+
+    onAudiogameResult = () => {
+        this.main.destroy();
+        this.main = new AudiogameResult(this.node);
         this.onNewPageLoaded(this.main);
     };
 }
