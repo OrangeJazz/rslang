@@ -52,7 +52,7 @@ export class Textbook extends Control {
                 `Раздел ${i + 1}`
             );
             button.node.type = 'button';
-            button.node.style.backgroundColor = `rgb(255, ${220 - i * 20}, ${220 - i * 20})`;
+            button.node.style.backgroundColor = `rgb(250, ${159 - i * 5}, ${66 - i * 10})`;
             button.node.onclick = () => {
                 this.groupButtons.forEach((groupButton, j) => {
                     if (i == j) {

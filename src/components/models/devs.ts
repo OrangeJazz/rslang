@@ -10,7 +10,7 @@ export class Devs {
                 link: 'https://github.com/antonsergeev',
                 role: 'Team Lead',
                 imgPath: 'Anton',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Тимлид нашей небольшой команды и просто отличный парень. Разрабатывал страницу учебника и игру "Спринт". Помогал всем по возможности и координировал работу команды.',
             },
             {
                 name: 'Олег',
@@ -24,7 +24,7 @@ export class Devs {
                 link: 'https://github.com/OrangeJazz',
                 role: 'Developer',
                 imgPath: 'Orange',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Начинающий frontend разработчик. Взялась за разработку игры "Аудиовызов" и главной страницы приложения, роутинг, а также за вопросы, связанные с дизайном и макетами',
             },
         ];
     }

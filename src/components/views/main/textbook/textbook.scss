@@ -1,41 +1,75 @@
+@import '../../variables.scss';
 .textbook {
     &__container {
-        display:  flex;
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 20px;
-        padding: 20px;
+        gap: 2rem;
+        padding-bottom: 4rem;
     }
 
     &__heading {
         text-align: center;
+        margin: 4rem 0 2rem;
+        color: $color-primary;
+        text-shadow: 1rem 0.5rem 1rem $color-dark-opasity;
     }
 
     &__preloading {
         text-align: center;
+        font-size: 2rem;
     }
 
     &__group-buttons {
-        display:  flex;
+        display: flex;
         justify-content: space-between;
-        gap: 10px;
+        gap: 1rem;
     }
 
     &__group-button {
         width: 100%;
-        padding: 10px;
+        padding: 1rem;
         border: none;
         cursor: pointer;
 
+        font-size: 1.6rem;
+        padding: 1rem 2rem;
+        color: $color-light;
+        border-radius: 0px 2rem;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:hover {
+            color: #fff;
+            transform: translate(0, -1px);
+            box-shadow: 5px 5px 1.5rem 0px rgba(0, 0, 0, 0.25);
+        }
+        &:active {
+            color: #fff;
+            transform: translate(0, 1px);
+            box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
+        }
+
         &_active {
-            border: 1px solid black;
-            font-weight: bold;
+            color: #fff;
+            transform: translate(0, 1px);
+            box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            &:hover,
+            &:active {
+                cursor: default;
+                color: #fff;
+                transform: translate(0, 1px);
+                box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
+            }
         }
     }
 
     &__cards {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
     }
 
@@ -43,12 +77,36 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        gap: 0.8rem;
     }
 
     &__page-button {
         padding: 5px;
-        width: 35px;
+        width: 4rem;
+        height: 4rem;
+        border: 2px solid $color-secondary;
+
+        font-weight: 700;
+        border-radius: 50%;
         cursor: pointer;
+        background-color: $color-light;
+        color: $color-dark;
+
+        &:hover,
+        &:active {
+            color: $color-light-l;
+            background-color: $color-secondary;
+        }
+    }
+
+    &__page-button:disabled,
+    &__page-button[disabled] {
+        background-color: $color-light;
+        color: $color-dark;
+        cursor: default;
+    }
+
+    &__page-number {
+        font-size: 1.6rem;
     }
 }
