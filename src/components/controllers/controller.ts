@@ -66,6 +66,7 @@ export class Controller {
                 pageView.renderCards(this.audiogame.wrongAnswers, pageView.mistakes);
                 pageView.getResult = () => this.audiogame.rightAnswers.size;
                 pageView.onAudioPlay = (audioNode) => this.audioManager.handle(audioNode);
+                this.audiogame = new Audiogame(this.model);
             }
         };
     }
