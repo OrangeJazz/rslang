@@ -8,6 +8,8 @@ import { Developers } from './developers/developers';
 export class StartPage extends Control {
     onTextbook!: () => void;
     onAudiogameStart!: () => void;
+    onRegister!: () => void;
+    onLogin!: () => void;
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main');
