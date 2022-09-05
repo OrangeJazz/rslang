@@ -3,12 +3,14 @@ import { StartPage } from './main/start-page/start-page';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { Textbook } from './main/textbook/textbook';
-import { AudiogameStart } from './main/audiogame-start/audiogame-start';
+import { AudiogameStart } from './main/audiogame/start/audiogame-start';
+import { AudiogameField } from './main/audiogame/field/game-field';
 import { Auth, AuthPageType } from './main/auth/auth';
 
 import './global.scss';
+import { AudiogameResult } from './main/audiogame/result/game-result';
 
-type PageView = StartPage | Textbook | AudiogameStart | Auth;
+type PageView = StartPage | Textbook | AudiogameStart | Auth | AudiogameField | AudiogameResult;
 
 export class View extends Control {
     header: Header;
@@ -24,6 +26,7 @@ export class View extends Control {
         this.header.onAuth = () => this.onLogin();
         this.main = new StartPage(this.node);
         this.main.onTextbook = () => this.onTextbook();
+        this.main.onAudiogameStart = () => this.onAudiogameStart();
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
@@ -46,6 +49,21 @@ export class View extends Control {
     onAudiogameStart = () => {
         this.main.destroy();
         this.main = new AudiogameStart(this.node);
+        this.onNewPageLoaded(this.main);
+        this.main.onAudiogameField = () => this.onAudiogameField();
+    };
+
+    onAudiogameField = () => {
+        this.main.destroy();
+        this.main = new AudiogameField(this.node);
+        this.main.onAudiogameField = () => this.onAudiogameField();
+        this.main.onAudiogameResult = () => this.onAudiogameResult();
+        this.onNewPageLoaded(this.main);
+    };
+
+    onAudiogameResult = () => {
+        this.main.destroy();
+        this.main = new AudiogameResult(this.node);
         this.onNewPageLoaded(this.main);
     };
 
