@@ -68,6 +68,7 @@ export class SprintGameController {
         gameField.onChoise = (word, isCorrect) => {
             gameAnswers.push({ word, isCorrect });
             if (sprintGameItems.length === 0) {
+                clearInterval(timerID);
                 document.removeEventListener('keydown', handleArrowKeys);
                 this.view.onSprintGameResult(gameAnswers);
             } else {
