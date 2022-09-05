@@ -1,12 +1,15 @@
 import { Control } from '../../../control';
 import { HeroLogo } from '../logo/logo';
 import './hero.scss';
+import { api } from '../../../../controllers/api';
 
 export class Hero extends Control {
     onTextbook!: () => void;
+    name: string | undefined;
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'section', 'hero');
+        this.getUserInfo();
         const container = new Control(this.node, 'div', 'container');
         const wrapper = new Control(container.node, 'div', 'hero__wrapper');
         const leftDiv = new Control(wrapper.node, 'div', 'hero__img-container_left');
@@ -32,4 +35,13 @@ export class Hero extends Control {
         rightImg.node.src = './img/photo2.jpg';
         rightImg.node.alt = 'photo2';
     }
+
+    getUserInfo = async () => {
+        if (localStorage.getItem('userId')) {
+            const userData = await api.getUserInfo();
+            this.name = userData.name;
+            const title = document.querySelector('h1') as HTMLHeadingElement;
+            title.textContent = title.textContent + `, ${this.name}!`;
+        }
+    };
 }

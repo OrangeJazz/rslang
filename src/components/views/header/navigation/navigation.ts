@@ -30,7 +30,12 @@ export class Nav extends Control {
         navRef4.node.href = '#';
         // }
         const navItem5 = new Control<HTMLElement>(navList.node, 'li', 'nav-btn');
-        const navRef5 = new Control<HTMLAnchorElement>(navItem5.node, 'a', 'nav__list-link btn', 'Вход');
+        const navRef5 = new Control<HTMLAnchorElement>(
+            navItem5.node,
+            'a',
+            'nav__list-link btn',
+            `${localStorage.getItem('userId') ? 'Выход' : 'Вход'}`
+        );
         navRef5.node.onclick = () => this.onAuth();
         navRef5.node.href = '#';
     }

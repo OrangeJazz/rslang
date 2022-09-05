@@ -29,8 +29,6 @@ export class Controller {
                     const words = await this.model.getWords(group, page);
                     pageView.renderCards(words);
                     pageView.onAudioPlay = (audioNode) => this.audioManager.handle(audioNode);
-                    const userInfo = await this.api.getUserInfo();
-                    console.log(userInfo);
                 };
 
                 pageView.onNewWordsPage(0, 0);
