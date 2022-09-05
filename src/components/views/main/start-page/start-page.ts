@@ -8,6 +8,7 @@ import { Developers } from './developers/developers';
 export class StartPage extends Control {
     onTextbook!: () => void;
     onAudiogameStart!: () => void;
+    onSprintGameStart!: () => void;
     onRegister!: () => void;
     onLogin!: () => void;
 
@@ -20,6 +21,7 @@ export class StartPage extends Control {
         features.onTextbook = () => this.onTextbook();
         const games = new Games(this.node);
         games.onAudiogameStart = () => this.onAudiogameStart();
+        games.onSprintGameStart = () => this.onSprintGameStart();
         new Developers(this.node);
     }
 }

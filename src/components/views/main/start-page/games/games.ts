@@ -5,7 +5,9 @@ import './games.scss';
 
 export class Games extends Control {
     onAudiogameStart!: () => void;
+    onSprintGameStart!: () => void;
     model: Model;
+
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'section', 'games');
         this.model = new Model();
@@ -16,9 +18,13 @@ export class Games extends Control {
         const cardsContainer = new Control(wrapper.node, 'div', 'games__cards');
         for (let i = 0; i < this.model.games.games.length; i++) {
             const card = new Card(cardsContainer.node, this.model.games.games[i], 'game');
-            if (i === 0) card.node.classList.add('card-game_left');
-            if (i === this.model.games.games.length - 1) card.node.classList.add('card-game_right');
-            card.onAudiogameStart = () => this.onAudiogameStart();
+            if (i === 0) {
+                card.node.classList.add('card-game_left');
+                card.onAudiogameStart = () => this.onAudiogameStart();
+            } else if (i === this.model.games.games.length - 1) {
+                card.node.classList.add('card-game_right');
+                card.onSprintGameStart = () => this.onSprintGameStart();
+            }
         }
     }
 }

@@ -1,0 +1,56 @@
+@import '../../../variables.scss';
+
+.sprint-game-field {
+    &__container {
+        display:  flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    &__heading {
+        font-size: 5.5rem;
+        margin-bottom: 2.5rem;
+        color: $color-primary;
+    }
+
+    &__preloading {
+        font-size: 2.5rem;
+    }
+
+    &__game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        min-width: 500px;
+        padding: 20px;
+        border: 1px solid darkgrey;
+    }
+
+    &__timer {
+        font-size: 2.5rem;
+    }
+
+    &__question {
+        padding: 2rem 4.7rem;
+        border: 2px solid $color-primary;
+        border-radius: 2rem;
+        font-size: 2.5rem;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    &__button.btn {
+        background-color: $color-secondary;
+        border-radius: 2rem;
+        color: black;
+        font-weight: 500;
+    }
+}

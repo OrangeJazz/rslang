@@ -10,21 +10,21 @@ export class Devs {
                 link: 'https://github.com/antonsergeev',
                 role: 'Team Lead',
                 imgPath: 'Anton',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Шаблон архитектуры приложения, раздел учебника, карточки слов, игра "Спринт"',
             },
             {
                 name: 'Олег',
                 link: 'https://github.com/ali-gator',
                 role: 'Developer',
                 imgPath: 'Oleg',
-                work: `I fall in love with the front-end when, as a customer, I encountered difficulties in understanding business tasks by performers and their formal approach to development. I like to create clean code and see the result. I follow the news from the world of Frontend, listen to podcasts, read articles and educational literature. Participated in the final of the Digital Hackathon 2019 in Kazan. I love to travel, visited 15 countries.`,
+                work: 'Настройка и развертывание бэкенда, функционал авторизации и регистрации пользователей.\n\nI fall in love with the front-end when, as a customer, I encountered difficulties in understanding business tasks by performers and their formal approach to development. I like to create clean code and see the result. I follow the news from the world of Frontend, listen to podcasts, read articles and educational literature. Participated in the final of the Digital Hackathon 2019 in Kazan. I love to travel, visited 15 countries.',
             },
             {
                 name: 'Мария',
                 link: 'https://github.com/OrangeJazz',
                 role: 'Developer',
                 imgPath: 'Orange',
-                work: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem consectetur reiciendis possimus, sequi suscipit explicabo inventore enim in natus animiquibusdam quidem aliquid facilis, nihil odio, atque non voluptates temporibus!',
+                work: 'Дизайн приложения, главная страница, шапка, подвал, карточки слов, игра "Аудиовызов"',
             },
         ];
     }
