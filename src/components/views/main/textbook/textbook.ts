@@ -24,7 +24,11 @@ export class Textbook extends Control {
     pageNumberControl!: Control;
     onNewWordsPage!: (groupNumber: number, pageNumber: number) => void;
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
+    onAudiogameField!: () => void;
     onSprintGameField!: (group: number, page: number) => void;
+    setLevel!: (group: number) => void;
+    setPage!: (page: number) => void;
+    startGame!: () => void;
 
     constructor(parentNode: HTMLElement, groupNumber = 0, pageNumber = 0) {
         super(parentNode, 'main', 'main textbook');
@@ -34,11 +38,11 @@ export class Textbook extends Control {
         const container = new Control(this.node, 'div', 'container textbook__container');
 
         new Control(container.node, 'h2', 'textbook__heading', 'Учебник');
+        this.renderGameButtons(container.node);
         this.renderGroupButtons(container.node);
         this.cards = new Control(container.node, 'div', 'textbook__cards');
         new Control(this.cards.node, 'p', 'textbook__preloading', 'Слова загружаются...');
         this.renderPageButtons(container.node);
-        this.renderGameButtons(container.node);
     }
 
     renderGroupButtons(parentNode: HTMLElement): void {
@@ -64,6 +68,7 @@ export class Textbook extends Control {
                     }
                 });
                 this.onNewWordsPage(i, 0);
+                this.setLevel(i);
             };
             this.groupButtons.push(button);
         }
@@ -85,21 +90,25 @@ export class Textbook extends Control {
             this.pageNumber = FIRST_PAGE_NUMBER;
             this.onNewWordsPage(this.groupNumber, this.pageNumber);
             this.updatePageButtonsDisabledAttribute();
+            this.setPage(FIRST_PAGE_NUMBER);
         };
         this.pageButtons.previous.node.onclick = () => {
             this.pageNumber -= 1;
             this.onNewWordsPage(this.groupNumber, this.pageNumber);
             this.updatePageButtonsDisabledAttribute();
+            this.setPage(this.pageNumber);
         };
         this.pageButtons.next.node.onclick = () => {
             this.pageNumber += 1;
             this.onNewWordsPage(this.groupNumber, this.pageNumber);
             this.updatePageButtonsDisabledAttribute();
+            this.setPage(this.pageNumber);
         };
         this.pageButtons.last.node.onclick = () => {
             this.pageNumber = LAST_PAGE_NUMBER;
             this.onNewWordsPage(this.groupNumber, this.pageNumber);
             this.updatePageButtonsDisabledAttribute();
+            this.setPage(LAST_PAGE_NUMBER);
         };
 
         this.updateCurrentPageElement();
@@ -116,6 +125,17 @@ export class Textbook extends Control {
         );
         sprintButton.node.type = 'button';
         sprintButton.node.onclick = () => this.onSprintGameField(this.groupNumber, this.pageNumber);
+        const audiogameButton = new Control<HTMLButtonElement>(
+            buttons.node,
+            'button',
+            'textbook__game-button',
+            'Аудиовызов!'
+        );
+        audiogameButton.node.type = 'button';
+        audiogameButton.node.onclick = () => {
+            this.startGame();
+            this.onAudiogameField();
+        };
     }
 
     updateCurrentPageElement(): void {

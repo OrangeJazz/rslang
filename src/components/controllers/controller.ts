@@ -47,6 +47,15 @@ export class Controller {
                     console.log(userInfo);
                 };
                 pageView.onNewWordsPage(0, 0);
+                pageView.setLevel = (selectedIndex) => {
+                    sessionStorage.setItem('group', `${selectedIndex}`);
+                };
+                pageView.setPage = (selectedIndex) => {
+                    sessionStorage.setItem('page', `${selectedIndex}`);
+                };
+                pageView.startGame = () => {
+                    this.audiogame.start();
+                };
             } else if (pageView instanceof SprintGameStart) {
                 pageView.onGameStart = async (groupNumber) => {
                     console.log(`Выбрана группа ${groupNumber}`);

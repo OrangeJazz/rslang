@@ -52,6 +52,7 @@ export class View extends Control {
         this.main = new Textbook(this.node);
         (this.main as Textbook).onSprintGameField = (group: number, page: number | undefined) =>
             this.onSprintGameField(group, page);
+        (this.main as Textbook).onAudiogameField = () => this.onAudiogameField();
         this.onNewPageLoaded(this.main);
     }
 

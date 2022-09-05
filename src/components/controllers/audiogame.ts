@@ -21,7 +21,9 @@ export class Audiogame {
 
     async getWords(): Promise<Word[]> {
         const group = sessionStorage.getItem('group') ? Number(sessionStorage.getItem('group')) : 0;
-        const page = Math.floor(Math.random() * 20);
+        const page = sessionStorage.getItem('page')
+            ? Number(sessionStorage.getItem('page'))
+            : Math.floor(Math.random() * 20);
         const words = (await this.model.getWords(group, page)) as Word[];
         return words;
     }

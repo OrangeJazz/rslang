@@ -114,4 +114,28 @@
     &__page-number {
         font-size: 1.6rem;
     }
+
+    &__game-buttons {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 1rem;
+    }
+    &__game-button {
+        padding: 1rem 2rem;
+        border: 1px solid transparent;
+        border-radius: 0px 2rem;
+        font-size: 1.6rem;
+        color: $color-light-l;
+        width: 18.7rem;
+
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        background-color: $color-primary;
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover {
+            transform: translate(0, -1px);
+            box-shadow: 5px 5px 1.5rem 0px rgba(0, 0, 0, 0.25);
+        }
+    }
 }
