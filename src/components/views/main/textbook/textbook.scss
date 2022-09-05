@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .textbook {
     &__container {
         display:  flex;
@@ -8,7 +10,10 @@
     }
 
     &__heading {
+        margin-bottom: 2.5rem;
         text-align: center;
+        font-size: 5.5rem;
+        color: $color-primary;
     }
 
     &__preloading {
@@ -22,15 +27,24 @@
     }
 
     &__group-button {
-        width: 100%;
+        flex-grow: 1;
         padding: 10px;
-        border: none;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background-color: $color-primary;
+        color: $color-light;
+        font-weight: bold;
         cursor: pointer;
 
-        &_active {
-            border: 1px solid black;
-            font-weight: bold;
+        &_active,
+        &:hover {
+            background-color: $color-secondary;
+            color: black;
         }
+    }
+
+    &__page-number {
+        font-size: 1.6rem;
     }
 
     &__cards {
@@ -43,12 +57,36 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        gap: 10px;
     }
 
     &__page-button {
         padding: 5px;
         width: 35px;
+        background-color: $color-primary;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: $color-light;
+        cursor: pointer;
+
+        &:disabled {
+            cursor: auto;
+        }
+    }
+
+    &__game-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__game-button {
+        padding: 1rem 2rem;
+        border: 1px solid transparent;
+        border-radius: 15px;
+        font-size: 1.6rem;
+        background-color: $color-secondary;
         cursor: pointer;
     }
 }

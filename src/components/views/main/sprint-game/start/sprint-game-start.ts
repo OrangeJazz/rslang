@@ -3,7 +3,7 @@ import { Control } from '../../../control';
 import './sprint-game-start.scss';
 
 export class SprintGameStart extends Control {
-    onLevelChoise!: (groupNumber: number) => void;
+    onGameStart!: (groupNumber: number, pageNumber: number | undefined) => void;
 
     constructor(parentNode: HTMLElement) {
         super(parentNode, 'main', 'main sprint-game-start');
@@ -38,6 +38,6 @@ export class SprintGameStart extends Control {
             'Начать'
         );
         button.node.type = 'button';
-        button.node.onclick = () => this.onLevelChoise(select.node.selectedIndex);
+        button.node.onclick = () => this.onGameStart(select.node.selectedIndex, undefined);
     }
 }

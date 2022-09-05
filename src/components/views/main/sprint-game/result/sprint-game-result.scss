@@ -1,6 +1,6 @@
 @import '../../../variables.scss';
 
-.sprint-game-field {
+.sprint-game-result {
     &__container {
         display:  flex;
         flex-direction: column;
@@ -16,10 +16,6 @@
         color: $color-primary;
     }
 
-    &__preloading {
-        font-size: 2.5rem;
-    }
-
     &__game-container {
         display: flex;
         flex-direction: column;
@@ -30,27 +26,37 @@
         border: 1px solid darkgrey;
     }
 
-    &__timer {
-        font-size: 2.5rem;
-    }
-
-    &__question {
-        padding: 2rem 4.7rem;
-        border: 2px solid $color-primary;
-        border-radius: 2rem;
-        font-size: 2.5rem;
-    }
-
-    &__buttons {
+    &__results {
         display: flex;
-        justify-content: center;
-        gap: 2rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
     }
 
-    &__button.btn {
-        background-color: $color-secondary;
-        border-radius: 2rem;
-        color: black;
-        font-weight: 500;
+    &__results-heading {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    &__results-count {
+        font-size: 2.5rem;
+    }
+
+    &__result {
+        font-size: 2rem;
+
+        &_correct {
+            color: green;
+        }
+
+        &_not-correct {
+            color: brown;
+        }
+    }
+
+    &__hr {
+        width: 100%;
+        margin: 5px 0;
+        border-top: 2px solid $color-primary;
     }
 }

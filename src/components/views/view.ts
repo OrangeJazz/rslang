@@ -1,7 +1,8 @@
 import { Control } from './control';
-import { SprintGameItem } from '../types';
+import { GameAnswer } from '../types';
 
 import { SprintGameField } from './main/sprint-game/field/sprint-game-field';
+import { SprintGameResult } from './main/sprint-game/result/sprint-game-result';
 import { SprintGameStart } from './main/sprint-game/start/sprint-game-start';
 import { StartPage } from './main/start-page/start-page';
 import { Header } from './header/header';
@@ -11,7 +12,7 @@ import { AudiogameStart } from './main/audiogame-start/audiogame-start';
 
 import './global.scss';
 
-type PageView = StartPage | Textbook | AudiogameStart | SprintGameStart | SprintGameField;
+type PageView = StartPage | Textbook | AudiogameStart | SprintGameStart | SprintGameField | SprintGameResult;
 
 export class View extends Control {
     header: Header;
@@ -25,9 +26,9 @@ export class View extends Control {
         this.header.onTextbook = () => this.onTextbook();
         this.header.onStartPage = () => this.onStartPage();
         this.main = new StartPage(this.node);
-        this.main.onTextbook = () => this.onTextbook();
-        this.main.onAudiogameStart = () => this.onAudiogameStart();
-        this.main.onSprintGameStart = () => this.onSprintGameStart();
+        (this.main as StartPage).onTextbook = () => this.onTextbook();
+        (this.main as StartPage).onAudiogameStart = () => this.onAudiogameStart();
+        (this.main as StartPage).onSprintGameStart = () => this.onSprintGameStart();
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
@@ -36,16 +37,18 @@ export class View extends Control {
     onTextbook() {
         this.main.destroy();
         this.main = new Textbook(this.node);
+        (this.main as Textbook).onSprintGameField = (group: number, page: number | undefined) =>
+            this.onSprintGameField(group, page);
         this.onNewPageLoaded(this.main);
     }
 
     onStartPage() {
         this.main.destroy();
         this.main = new StartPage(this.node);
+        (this.main as StartPage).onTextbook = () => this.onTextbook();
+        (this.main as StartPage).onAudiogameStart = () => this.onAudiogameStart();
+        (this.main as StartPage).onSprintGameStart = () => this.onSprintGameStart();
         this.onNewPageLoaded(this.main);
-        this.main.onTextbook = () => this.onTextbook();
-        this.main.onAudiogameStart = () => this.onAudiogameStart();
-        this.main.onSprintGameStart = () => this.onSprintGameStart();
     }
 
     onAudiogameStart = () => {
@@ -60,9 +63,15 @@ export class View extends Control {
         this.onNewPageLoaded(this.main);
     };
 
-    onSprintGameField = (sprintGameItems: SprintGameItem[]) => {
+    onSprintGameField = (group: number, page: number | undefined) => {
         this.main.destroy();
-        this.main = new SprintGameField(this.node, sprintGameItems);
+        this.main = new SprintGameField(this.node, group, page);
+        this.onNewPageLoaded(this.main);
+    };
+
+    onSprintGameResult = (gameAnswers: GameAnswer[]) => {
+        this.main.destroy();
+        this.main = new SprintGameResult(this.node, gameAnswers);
         this.onNewPageLoaded(this.main);
     };
 }

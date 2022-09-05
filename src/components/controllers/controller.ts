@@ -1,26 +1,30 @@
 import { BACKEND_BASE_URL } from './config';
 import { AudioManager } from './audio-manager';
+import { SprintGameController } from './sprint-game-controller';
+
 import { Model } from '../models/model';
+
 import { View } from '../views/view';
 import { SprintGameField } from '../views/main/sprint-game/field/sprint-game-field';
 import { SprintGameStart } from '../views/main/sprint-game/start/sprint-game-start';
 import { Textbook } from '../views/main/textbook/textbook';
-import { GameAnswer, SprintGameItem } from '../types';
 
 export class Controller {
     model: Model;
     view: View;
     audioManager: AudioManager;
+    sprintGameController: SprintGameController;
 
     constructor(model: Model, view: View) {
         this.model = model;
         this.view = view;
         this.model.setBackendBaseURL(BACKEND_BASE_URL);
         this.audioManager = new AudioManager();
+        this.sprintGameController = new SprintGameController(model, view);
     }
 
     async start(): Promise<void> {
-        this.view.onNewPageLoaded = (pageView) => {
+        this.view.onNewPageLoaded = async (pageView) => {
             if (pageView instanceof Textbook) {
                 pageView.onNewWordsPage = async (group, page) => {
                     console.log(`Загружаю слова... (group=${group}, page=${page})`);
@@ -30,37 +34,13 @@ export class Controller {
                 };
                 pageView.onNewWordsPage(0, 0);
             } else if (pageView instanceof SprintGameStart) {
-                pageView.onLevelChoise = async (group) => {
-                    console.log(`Выбрана группа ${group}`);
-                    const sprintGameItems = await this.model.getWordsForSprintGame(group);
-                    this.view.onSprintGameField(sprintGameItems);
+                pageView.onGameStart = async (groupNumber) => {
+                    console.log(`Выбрана группа ${groupNumber}`);
+                    const pageNumber = undefined;
+                    this.view.onSprintGameField(groupNumber, pageNumber);
                 };
             } else if (pageView instanceof SprintGameField) {
-                const sprintGameItems = pageView.sprintGameItems;
-                const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
-                const gameAnswers = [] as GameAnswer[];
-                let timerValueInSeconds = 10;
-                pageView.renderGameField(sprintGameItem, timerValueInSeconds);
-                let timerID: number | undefined = undefined;
-                const updateTimer = () => {
-                    timerValueInSeconds -= 1;
-                    pageView.timer.node.innerText = `${timerValueInSeconds}`;
-                    if (timerValueInSeconds === 0) {
-                        clearInterval(timerID);
-                        pageView.renderGameResults(gameAnswers);
-                    }
-                };
-                timerID = setInterval(updateTimer, 1000) as unknown as number;
-
-                pageView.onChoise = (word, isCorrect) => {
-                    gameAnswers.push({ value: word, isCorrect });
-                    if (sprintGameItems.length === 0) {
-                        pageView.renderGameResults(gameAnswers);
-                    } else {
-                        const sprintGameItem = sprintGameItems.pop() as SprintGameItem;
-                        pageView.renderGameField(sprintGameItem, timerValueInSeconds);
-                    }
-                };
+                this.sprintGameController.startGame(pageView);
             }
         };
     }

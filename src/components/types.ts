@@ -41,6 +41,6 @@ export interface SprintGameItem {
 }
 
 export interface GameAnswer {
-    value: string;
+    word: Word;
     isCorrect: boolean;
 }

@@ -24,6 +24,7 @@ export class Textbook extends Control {
     pageNumberControl!: Control;
     onNewWordsPage!: (groupNumber: number, pageNumber: number) => void;
     onAudioPlay!: (audioNode: HTMLAudioElement) => void;
+    onSprintGameField!: (group: number, page: number) => void;
 
     constructor(parentNode: HTMLElement, groupNumber = 0, pageNumber = 0) {
         super(parentNode, 'main', 'main textbook');
@@ -37,6 +38,7 @@ export class Textbook extends Control {
         this.cards = new Control(container.node, 'div', 'textbook__cards');
         new Control(this.cards.node, 'p', 'textbook__preloading', 'Слова загружаются...');
         this.renderPageButtons(container.node);
+        this.renderGameButtons(container.node);
     }
 
     renderGroupButtons(parentNode: HTMLElement): void {
@@ -52,7 +54,6 @@ export class Textbook extends Control {
                 `Раздел ${i + 1}`
             );
             button.node.type = 'button';
-            button.node.style.backgroundColor = `rgb(255, ${220 - i * 20}, ${220 - i * 20})`;
             button.node.onclick = () => {
                 this.groupButtons.forEach((groupButton, j) => {
                     if (i == j) {
@@ -102,6 +103,18 @@ export class Textbook extends Control {
 
         this.updateCurrentPageElement();
         this.updatePageButtonsDisabledAttribute();
+    }
+
+    renderGameButtons(parentNode: HTMLElement): void {
+        const buttons = new Control(parentNode, 'div', 'textbook__game-buttons');
+        const sprintButton = new Control<HTMLButtonElement>(
+            buttons.node,
+            'button',
+            'textbook__game-button',
+            'Играть в спринт!'
+        );
+        sprintButton.node.type = 'button';
+        sprintButton.node.onclick = () => this.onSprintGameField(this.groupNumber, this.pageNumber);
     }
 
     updateCurrentPageElement(): void {
