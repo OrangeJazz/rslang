@@ -1,0 +1,83 @@
+@import '../../../variables.scss';
+.card {
+    height: 35rem;
+    width: 58rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border-radius: 9px;
+    border-color: transparent;
+    transition: all 0.3s;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(13, 13, 13, 0.04);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &:hover {
+        background-color: $color-light-l;
+        box-shadow: 0.5rem 3.5rem 1.4rem rgba(13, 13, 13, 0.04);
+        transform: translate(-2px, -2px);
+    }
+
+    &__audio-and-text-container {
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__word {
+        color: $color-primary;
+        font-weight: bold;
+    }
+
+    &__transcription {
+        color: gray;
+    }
+
+    &__word-main-container {
+        display: flex;
+        width: 32rem;
+        justify-content: space-around;
+    }
+
+    &__word-container {
+        display: flex;
+        font-size: 1.8rem;
+        font-weight: 700;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    &__text-example-container,
+    &__text-meaning-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 1.6rem;
+        text-align: justify;
+    }
+
+    &__text-container {
+        width: 32rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__audio-button {
+        height: 2.5rem;
+        width: 2.5rem;
+        border: none;
+        background-color: transparent;
+        background-image: url('play-button.svg');
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+        &_playing {
+            background-image: url('pause-button.svg');
+        }
+    }
+}

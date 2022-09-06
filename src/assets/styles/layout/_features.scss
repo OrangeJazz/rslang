@@ -1,0 +1,10 @@
+.features {
+    &__wrapper {
+        margin: 12rem 0 12rem 0;
+    }
+
+    &__cards {
+        display: flex;
+        justify-content: space-around;
+    }
+}
