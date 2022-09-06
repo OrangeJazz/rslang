@@ -1,45 +1,70 @@
 @import '../../variables.scss';
-
 .textbook {
     &__container {
-        display:  flex;
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 20px;
-        padding: 20px 0;
+        gap: 2rem;
+        padding-bottom: 4rem;
     }
 
     &__heading {
         margin-bottom: 2.5rem;
         text-align: center;
-        font-size: 5.5rem;
+        margin: 4rem 0 2rem;
         color: $color-primary;
+        text-shadow: 1rem 0.5rem 1rem $color-dark-opasity;
     }
 
     &__preloading {
         text-align: center;
+        font-size: 2rem;
     }
 
     &__group-buttons {
-        display:  flex;
+        display: flex;
         justify-content: space-between;
-        gap: 10px;
+        gap: 1rem;
     }
 
     &__group-button {
-        flex-grow: 1;
-        padding: 15px;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        background-color: $color-primary;
-        color: $color-light;
-        font-weight: bold;
+        width: 100%;
+        padding: 1rem;
+        border: none;
         cursor: pointer;
 
-        &_active,
+        font-size: 1.6rem;
+        padding: 1rem 2rem;
+        color: $color-light;
+        border-radius: 0px 2rem;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s;
+        text-transform: uppercase;
+        cursor: pointer;
         &:hover {
-            background-color: $color-secondary;
-            color: black;
+            color: #fff;
+            transform: translate(0, -1px);
+            box-shadow: 5px 5px 1.5rem 0px rgba(0, 0, 0, 0.25);
+        }
+        &:active {
+            color: #fff;
+            transform: translate(0, 1px);
+            box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
+        }
+
+        &_active {
+            color: $color-light-l;
+            background-color: $color-primary !important;
+
+            transform: translate(0, 1px);
+            box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+            &:hover,
+            &:active {
+                cursor: default;
+                transform: translate(0, 1px);
+                box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
+            }
         }
     }
 
@@ -50,6 +75,7 @@
     &__cards {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
     }
 
@@ -57,36 +83,60 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 0.8rem;
     }
 
     &__page-button {
         padding: 5px;
-        width: 35px;
-        background-color: $color-primary;
-        font-size: 1.6rem;
-        font-weight: bold;
-        color: $color-light;
-        cursor: pointer;
+        width: 4rem;
+        height: 4rem;
+        border: 2px solid $color-secondary;
 
-        &:disabled {
-            cursor: auto;
+        font-weight: 700;
+        border-radius: 50%;
+        cursor: pointer;
+        background-color: $color-light;
+        color: $color-dark;
+
+        &:hover,
+        &:active {
+            color: $color-light-l;
+            background-color: $color-secondary;
         }
+    }
+
+    &__page-button:disabled,
+    &__page-button[disabled] {
+        background-color: $color-light;
+        color: $color-dark;
+        cursor: default;
+    }
+
+    &__page-number {
+        font-size: 1.6rem;
     }
 
     &__game-buttons {
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: center;
-        gap: 10px;
+        gap: 1rem;
     }
-
     &__game-button {
         padding: 1rem 2rem;
         border: 1px solid transparent;
-        border-radius: 15px;
+        border-radius: 0px 2rem;
         font-size: 1.6rem;
-        background-color: $color-secondary;
+        color: $color-light-l;
+        width: 18.7rem;
+
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        background-color: $color-primary;
+        transition: all 0.3s;
         cursor: pointer;
+        &:hover {
+            transform: translate(0, -1px);
+            box-shadow: 5px 5px 1.5rem 0px rgba(0, 0, 0, 0.25);
+        }
     }
 }
