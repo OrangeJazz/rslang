@@ -62,7 +62,7 @@ export class Audiogame {
             const words = this.words as Word[];
             const i = Math.floor(Math.random() * words.length);
             const randomWord = words[i];
-            if (randomWord === correctAnswer) continue;
+            if (answers.includes(randomWord)) continue;
             answers.push(randomWord);
         }
         const shuffleAnswers = this.shuffleWords(answers);
