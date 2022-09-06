@@ -2,7 +2,8 @@
 
 ## Technologies
 
-### Frontend  
+### Frontend
+
 + Typescript
 + OOP
 + SASS
@@ -11,12 +12,15 @@
 + Webpack
 
 ### Backend
+
 https://github.com/Ali-Gator/react-rslang-be
+
 + Express
 + MongoDB
 + JWT
 
 ## Functionality
+
 + Main single page application with landing page
 + Register new user
 + Login user
@@ -27,21 +31,25 @@ https://github.com/Ali-Gator/react-rslang-be
 + Statistics (in development)
 
 ## Video
+
 // todo: Paste URL
+
 ## Developers
+
 + [Anton Sergeev](https://github.com/antonsergeev)
 + [Oleg Gordienov](https://github.com/ali-gator)
 + [Mariya Vasilieva](https://github.com/OrangeJazz)
-
 
 ## Deploy
 
 ### Frontend
 
-// todo: Paste URL
+https://antonsergeev.github.io/rslang/
 
 ### Backend
+
 https://rslang-backend163.herokuapp.com/
 
 ### Swagger
+
 https://rslang-backend163.herokuapp.com/doc/
