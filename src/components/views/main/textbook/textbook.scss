@@ -53,14 +53,15 @@
         }
 
         &_active {
-            color: #fff;
+            color: $color-light-l;
+            background-color: $color-primary !important;
+
             transform: translate(0, 1px);
             box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
             font-weight: 700;
             &:hover,
             &:active {
                 cursor: default;
-                color: #fff;
                 transform: translate(0, 1px);
                 box-shadow: 5px 5px 0.5rem 0px rgba(0, 0, 0, 0.1);
             }
