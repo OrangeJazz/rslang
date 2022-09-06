@@ -4,6 +4,8 @@ import { GameAnswer } from '../../../../types';
 import './sprint-game-result.scss';
 
 export class SprintGameResult extends Control {
+    onRegister!: () => void;
+
     constructor(parentNode: HTMLElement, gameAnswers: GameAnswer[]) {
         super(parentNode, 'main', 'main sprint-game-result');
         const container = new Control(this.node, 'div', 'container sprint-game-result__container');

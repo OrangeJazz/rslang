@@ -1,4 +1,5 @@
 import { User } from '../types';
+import { BACKEND_BASE_URL } from './config';
 
 export class Api {
     private readonly backendBaseURL: string;
@@ -44,7 +45,7 @@ export class Api {
         throw new Error(res.status.toString());
     }
 
-    async getUserInfo(): Promise<void> {
+    async getUserInfo(): Promise<{ name: string; id: string; email: string }> {
         const res = await fetch(`${this.backendBaseURL}users/${this.userId}`, {
             method: 'GET',
             headers: {
@@ -74,3 +75,5 @@ export class Api {
         throw new Error(res.status.toString());
     }
 }
+
+export const api = new Api(BACKEND_BASE_URL);

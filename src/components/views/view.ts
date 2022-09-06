@@ -31,6 +31,7 @@ export class View extends Control {
     main: PageView;
     footer: Footer;
     onNewPageLoaded!: (pageView: PageView) => void;
+    isLogged: boolean | undefined;
 
     constructor() {
         super(document.body, 'div', 'app-container');
@@ -45,6 +46,7 @@ export class View extends Control {
         this.footer = new Footer(this.node);
         this.footer.onTextbook = () => this.onTextbook();
         this.footer.onStartPage = () => this.onStartPage();
+        this.isLogged = !!localStorage.getItem('userId');
     }
 
     onTextbook() {
@@ -93,10 +95,15 @@ export class View extends Control {
     };
 
     onLogin = () => {
-        this.main.destroy();
-        this.main = new Auth(this.node, AuthPageType.login);
-        (this.main as Auth).onRegister = () => this.onRegister();
-        this.onNewPageLoaded(this.main);
+        if (this.isLogged) {
+            localStorage.clear();
+            location.reload();
+        } else {
+            this.main.destroy();
+            this.main = new Auth(this.node, AuthPageType.login);
+            this.main.onRegister = () => this.onRegister();
+            this.onNewPageLoaded(this.main);
+        }
     };
 
     onSprintGameStart = () => {
