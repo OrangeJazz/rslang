@@ -77,7 +77,7 @@ export class Controller {
                             email,
                             password,
                         } as unknown as Omit<User, 'name'>);
-                        window.location.replace('/');
+                        window.location.reload();
                     });
                 };
                 pageView.auth();
